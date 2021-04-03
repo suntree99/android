@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Count App</string>
+    <string name="select">Sélectionnez votre besoin!</string>
+    <string name="basic">Calculatrice</string>
+    <string name="app_desc">L\'application pour votre besoin de comptage</string>
+    <string name="scientific">Calculatrice scientifique</string>
+    <string name="exit">Sortie</string>
+    <string name="quit">Sortie</string>
+    <string name="welcome_basic">Bienvenue dans Basic Calculator</string>
+    <string name="welcome_scientific">Bienvenue sur Scientific Calculator</string>
+    <string name="bye_bye">Application fermée</string>
+</resources>

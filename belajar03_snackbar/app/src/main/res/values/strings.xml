@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">03_Snack</string>
+    <string name="action_listener">Click!</string>
+    <string name="action_listener_snack">Snack!</string>
+</resources>

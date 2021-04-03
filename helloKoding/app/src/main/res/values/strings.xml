@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">helloKoding</string>
+    <string name="greeting">Hello Dodol!</string>
+    <string name="click_me">Tampilkan Dodol</string>
+    <string name="hint">Masukkan jenis dodol</string>
+    <string name="jenis_dodol">jenis dodol</string>
+</resources>

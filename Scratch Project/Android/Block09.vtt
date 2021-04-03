@@ -1,0 +1,503 @@
+WEBVTT
+
+1
+00:00:00.580 --> 00:00:01.180
+In this video,
+
+2
+00:00:01.180 --> 00:00:05.200
+I'll show you how to request the service
+from a messaging application
+
+3
+00:00:05.200 --> 00:00:09.690
+already installed on your phone, to send
+a text composed in your own application.
+
+4
+00:00:09.690 --> 00:00:15.240
+So we'll be using the example
+provided by the "Block 8" application.
+
+5
+00:00:15.240 --> 00:00:19.190
+In this application,
+the user types in a message here.
+
+6
+00:00:19.190 --> 00:00:23.826
+[SOUND] And
+when he clicks the send button,
+
+7
+00:00:23.826 --> 00:00:28.195
+the messaging app of the phone opens and
+
+8
+00:00:28.195 --> 00:00:32.707
+you can see that the text is already set.
+
+9
+00:00:32.707 --> 00:00:37.260
+And when you click the send button
+the message is sent to the other phone.
+
+10
+00:00:40.080 --> 00:00:44.588
+Start a new Android studio project,
+
+11
+00:00:44.588 --> 00:00:48.992
+call the application Block08, click Next.
+
+12
+00:00:48.992 --> 00:00:54.980
+Next pick an empty activity,
+click Next, and Finish.
+
+13
+00:00:54.980 --> 00:01:01.010
+Then start by designing the graphical user
+interface in the activity_main.xml file.
+
+14
+00:01:01.010 --> 00:01:07.600
+I remove the existing TextView,
+and I go on the Design view.
+
+15
+00:01:07.600 --> 00:01:12.723
+And I'll add a multi-line text
+
+16
+00:01:12.723 --> 00:01:18.130
+and a button, okay.
+
+17
+00:01:18.130 --> 00:01:21.220
+Let's configure these two views now.
+
+18
+00:01:21.220 --> 00:01:25.250
+The button will read "send", and
+
+19
+00:01:25.250 --> 00:01:29.950
+we will call it the "button_send".
+
+20
+00:01:29.950 --> 00:01:31.620
+Okay, and onClick
+
+21
+00:01:33.540 --> 00:01:41.594
+We want to call a method called "sendMessage"
+
+22
+00:01:41.594 --> 00:01:44.940
+"sendMessage", okay.
+
+23
+00:01:44.940 --> 00:01:51.662
+And this view here, we want it larger.
+
+24
+00:01:51.662 --> 00:01:55.750
+This'll be our EditText message.
+
+25
+00:01:55.750 --> 00:02:00.314
+Let's change the id,
+
+26
+00:02:00.314 --> 00:02:03.443
+"EditText_message"
+
+27
+00:02:03.443 --> 00:02:09.769
+And to make it more clear for
+the users at this space is dedicated to
+
+28
+00:02:09.769 --> 00:02:15.304
+typing the message,
+we can add a hint like this.
+
+29
+00:02:15.304 --> 00:02:22.080
+android:hint="type your message".
+
+30
+00:02:22.080 --> 00:02:27.550
+So this will be displayed on the screen
+and as soon as the user clicks the area,
+
+31
+00:02:27.550 --> 00:02:32.310
+message will disappear and
+he can type in his own text, okay.
+
+32
+00:02:32.310 --> 00:02:34.140
+That's how it would look.
+
+33
+00:02:35.750 --> 00:02:38.520
+Now, let's define this "sendMessage"
+
+34
+00:02:40.290 --> 00:02:43.870
+method that we've associated
+with the send button.
+
+35
+00:02:43.870 --> 00:02:47.440
+So, I move to MainActivity.java.
+
+36
+00:02:47.440 --> 00:02:52.190
+And here I create a public
+void method named
+
+37
+00:02:52.190 --> 00:02:57.920
+sendMessage, and
+it takes a View as a parameter.
+
+38
+00:03:00.547 --> 00:03:05.280
+Okay, so basically what we
+need to do here is to retrieve
+
+39
+00:03:05.280 --> 00:03:09.106
+the text typed in by the user
+in the edit text and
+
+40
+00:03:09.106 --> 00:03:15.610
+then transmit it to an application
+which is able to send SMS messages.
+
+41
+00:03:15.610 --> 00:03:20.470
+So first let's retrieve
+the text from the EditView.
+
+42
+00:03:20.470 --> 00:03:27.740
+So we create a variable called "message"
+to hold the text entered by the user.
+
+43
+00:03:28.760 --> 00:03:32.820
+So first I need to retrieve the View.
+
+44
+00:03:34.300 --> 00:03:43.712
+I can use a
+"findViewById(R.id.editText_message)"
+
+45
+00:03:43.712 --> 00:03:51.040
+So, this's an EditText. Okay.
+
+46
+00:03:53.520 --> 00:03:58.996
+From this EditText
+I can call the getText method.
+
+47
+00:03:58.996 --> 00:04:04.110
+And cast that into a String.
+
+48
+00:04:04.110 --> 00:04:07.700
+Okay now I've retrieved
+the text typed in by the user.
+
+49
+00:04:08.960 --> 00:04:13.150
+Okay, so now I need to pass this
+information to another activity
+
+50
+00:04:13.150 --> 00:04:14.940
+which will send the message.
+
+51
+00:04:14.940 --> 00:04:18.500
+So let's first create an Intent for
+this other activity.
+
+52
+00:04:21.397 --> 00:04:23.951
+And let's call it "smsIntent".
+
+53
+00:04:28.316 --> 00:04:32.353
+I need to pass some information
+to the next activity,
+
+54
+00:04:32.353 --> 00:04:37.090
+I need to pass the message
+which was typed in by the user.
+
+55
+00:04:37.090 --> 00:04:42.820
+So I use the putExtra method to do that,
+smsIntent.putExtra,
+
+56
+00:04:42.820 --> 00:04:48.380
+and here I first need to
+specify the key of the extra,
+
+57
+00:04:48.380 --> 00:04:52.110
+so that will be "sms_body".
+
+58
+00:04:52.110 --> 00:04:56.030
+And then the value,
+which is the message in our case.
+
+59
+00:04:57.370 --> 00:05:03.760
+And then I can just start the activity,
+okay.
+
+60
+00:05:03.760 --> 00:05:05.760
+Well, of course, this is not valid yet,
+
+61
+00:05:05.760 --> 00:05:11.590
+because, we've declared the Intent
+smsIntent but we haven't created it yet.
+
+62
+00:05:11.590 --> 00:05:17.300
+So, we need some kind of new Intent
+here in order to create the object.
+
+63
+00:05:19.010 --> 00:05:21.440
+Now, we have two possibilities:
+
+64
+00:05:21.440 --> 00:05:27.130
+We can either develop our own activity,
+able to send messages across a network,
+
+65
+00:05:27.130 --> 00:05:31.320
+or we can rely on existing
+applications on our phone,
+
+66
+00:05:31.320 --> 00:05:34.680
+which are already able to send messages.
+
+67
+00:05:34.680 --> 00:05:37.120
+And that's what we will do here.
+
+68
+00:05:37.120 --> 00:05:42.210
+But a difference between what we're
+going to do, and what we've done before,
+
+69
+00:05:42.210 --> 00:05:48.020
+is that before we specified explicitly
+which application we wanted to start.
+
+70
+00:05:48.020 --> 00:05:53.310
+Rather here, we will just say, okay,
+I want to start an activity which is able
+
+71
+00:05:53.310 --> 00:05:58.910
+to send messages, but
+I don't give a specific name of an activity.
+
+72
+00:05:58.910 --> 00:06:02.140
+The system will then
+look up on the phone and
+
+73
+00:06:02.140 --> 00:06:08.210
+list all the applications which declare
+that they are capable of sending messages.
+
+74
+00:06:08.210 --> 00:06:11.610
+And then the user will be presented,
+maybe, with a list, and he'll have to
+
+75
+00:06:11.610 --> 00:06:18.010
+choose one of the applications, and then
+this application will be started by the system.
+
+76
+00:06:18.010 --> 00:06:25.810
+So here, I need to create an explicit,
+implicit sorry, an implicit intent.
+
+77
+00:06:25.810 --> 00:06:30.400
+So I don't mention a specific a name,
+I just say that I want something
+
+78
+00:06:30.400 --> 00:06:34.890
+that's able to perform the ACTION_SENDTO.
+
+79
+00:06:37.430 --> 00:06:42.890
+And this intent requires
+to provide a destination.
+
+80
+00:06:42.890 --> 00:06:45.350
+Okay, to whom are we sending?
+
+81
+00:06:45.350 --> 00:06:50.732
+So let's create a destination and
+it should be a Uri, "destination".
+
+82
+00:06:53.569 --> 00:06:59.160
+And you know, in our case we will be
+sending it to a second emulator.
+
+83
+00:06:59.160 --> 00:07:03.431
+So let me show you. I've got
+2 emulators started already.
+
+84
+00:07:03.431 --> 00:07:10.471
+You see that here the first one is 5554,
+and the second one is 5556,
+
+85
+00:07:10.471 --> 00:07:15.500
+so I want to send the message
+from this one to this one.
+
+86
+00:07:15.500 --> 00:07:17.519
+So destination is 5556.
+
+87
+00:07:19.680 --> 00:07:25.399
+Of course, in your real application,
+you will put a real phone number.
+
+88
+00:07:25.399 --> 00:07:28.882
+5, 5, 5, 6.
+
+89
+00:07:35.126 --> 00:07:38.170
+I forgot the capital here, okay.
+
+90
+00:07:40.358 --> 00:07:43.091
+So now let's try that on the phone,
+on the emulator.
+
+91
+00:07:43.091 --> 00:07:45.376
+So I want to start taht on the first one.
+
+92
+00:07:51.597 --> 00:07:56.495
+So I click here, the hint will disappear
+when I start typing my message.
+
+93
+00:07:56.495 --> 00:07:59.108
+Hello!
+
+94
+00:07:59.108 --> 00:08:02.511
+How are you?
+
+95
+00:08:02.511 --> 00:08:08.040
+Okay, when I'm done with my message,
+I can click Send.
+
+96
+00:08:08.040 --> 00:08:12.750
+And here, I'm directed to
+the application able to send messages.
+
+97
+00:08:12.750 --> 00:08:18.080
+And you see that the message is
+already set here in the typing area.
+
+98
+00:08:18.080 --> 00:08:20.470
+And I can just click the send button.
+
+99
+00:08:21.960 --> 00:08:25.210
+And here on the second phone you see
+that the message has been received.
+
+100
+00:08:27.402 --> 00:08:32.430
+In this video I've shown you how to request
+service from a messaging application.
+
+101
+00:08:32.430 --> 00:08:37.790
+First you need to create an implicit
+Intent for the ACTION_SENDTO capability.
+
+102
+00:08:37.790 --> 00:08:41.758
+Doing new Intent(Intent.ACTION_SENDTO, and
+
+103
+00:08:41.758 --> 00:08:50.449
+then you provide the Uri of the destination:
+"smsto:" and then the phone number.
+
+104
+00:08:50.449 --> 00:08:54.921
+After that the system will find
+all the applications which have
+
+105
+00:08:54.921 --> 00:08:57.588
+declared to offer this capability.
+
+106
+00:08:57.588 --> 00:09:03.294
+And if there are multiple candidates,
+then the user will be asked to pick one,
+
+107
+00:09:03.294 --> 00:09:06.770
+then you can use this
+intent as any others.
+
+108
+00:09:06.770 --> 00:09:10.910
+Using the putExtra to pass
+information to the intent.
+
+109
+00:09:10.910 --> 00:09:13.180
+And using startActivity to start it.

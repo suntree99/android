@@ -1,0 +1,133 @@
+WEBVTT
+
+1
+00:00:00.490 --> 00:00:04.190
+Now let me show you a different
+solution to what an action to a button.
+
+2
+00:00:05.920 --> 00:00:06.789
+Let's go back to record.
+
+3
+00:00:10.572 --> 00:00:14.900
+In the description,
+
+4
+00:00:14.900 --> 00:00:19.753
+our delayed one click property.
+
+5
+00:00:21.430 --> 00:00:28.160
+And now I'll define the code associated
+with a button directly into the Java code.
+
+6
+00:00:28.160 --> 00:00:34.590
+So here after re-tweeting our
+reference to the blue button.
+
+7
+00:00:34.590 --> 00:00:39.525
+I'll attach un-click listener tweet.
+
+8
+00:00:39.525 --> 00:00:46.190
+ButtonBlue.setOnClickListener.
+
+9
+00:00:46.190 --> 00:00:51.300
+So I then I associate an object
+with the blue button,
+
+10
+00:00:51.300 --> 00:00:54.510
+which will listen to the click event.
+
+11
+00:00:54.510 --> 00:00:58.040
+And when this event occurs,
+this object will be called and
+
+12
+00:00:58.040 --> 00:01:00.400
+this specific method will be called.
+
+13
+00:01:00.400 --> 00:01:06.120
+So let's say that this, the main activity,
+which will in fact listen for the event.
+
+14
+00:01:06.120 --> 00:01:11.880
+So of course,
+main activity is not on click listener,
+
+15
+00:01:11.880 --> 00:01:17.375
+so we need to make it implement
+the on click listener.
+
+16
+00:01:17.375 --> 00:01:21.325
+I mean that we'll have to
+implement the on click method, and
+
+17
+00:01:21.325 --> 00:01:25.225
+read to generate the skeleton for us.
+
+18
+00:01:25.225 --> 00:01:29.945
+And now we just need to indicate, what do
+we need to do when the button is clicked.
+
+19
+00:01:29.945 --> 00:01:33.245
+It's with user copy this line here, or
+
+20
+00:01:33.245 --> 00:01:39.060
+you can directly call to the method,
+since it's already reaching.
+
+21
+00:01:42.857 --> 00:01:47.027
+Okay, now we've attached
+an action with the first button,
+
+22
+00:01:47.027 --> 00:01:50.070
+the blue button, but
+not with the pink one.
+
+23
+00:01:50.070 --> 00:01:52.348
+Let's do that for this button as well.
+
+24
+00:01:59.429 --> 00:02:01.368
+Okay and I'll just try it.
+
+25
+00:02:05.814 --> 00:02:09.794
+When I click on the To Do
+on the pink button,
+
+26
+00:02:09.794 --> 00:02:13.700
+I come to to do, to do, to do pop up.
+
+27
+00:02:13.700 --> 00:02:17.150
+And when I click on the blue
+button it disappears.
+
+28
+00:02:19.090 --> 00:02:22.450
+Now, I'll show you a different way to
+add the button to the graphical user
+
+29
+00:02:22.450 --> 00:02:25.090
+interface, directly from the JAVA code.

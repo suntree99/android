@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">7_Belajar</string>
+    <string name="action_listener">Click!</string>
+    <string name="action_listener_snack">Snack!</string>
+    <string name="text_in_fragment">I am fragment</string>
+    <string name="hello_text">Hello Text!</string>
+    <string name="hello_button">Hello Button!</string>
+    <string name="hello_input_text">Hello Input Text</string>
+    <string name="hello">Hello</string>
+    <string name="hello_custom_view">Hello Custom View!</string>
+    <string name="title">Title</string>
+    <string name="overview">Overview</string>
+</resources>

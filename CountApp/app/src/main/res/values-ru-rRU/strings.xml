@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Count App</string>
+    <string name="app_desc">Приложение для вашего счета нужно</string>
+    <string name="select">Выберите вашу потребность!</string>
+    <string name="basic">Калькулятор</string>
+    <string name="scientific">Научный калькулятор</string>
+    <string name="exit">Выход</string>
+    <string name="quit">Выход</string>
+    <string name="welcome_basic">Добро пожаловать в базовый калькулятор</string>
+    <string name="welcome_scientific">Добро пожаловать в научный калькулятор</string>
+    <string name="bye_bye">Приложение закрыто</string>
+</resources>

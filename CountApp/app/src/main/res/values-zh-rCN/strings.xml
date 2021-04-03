@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Count App</string>
+    <string name="app_desc">您所需的應用程序</string>
+    <string name="select">選擇您的需要！</string>
+    <string name="basic">計算器</string>
+    <string name="scientific">科學計算器</string>
+    <string name="exit">出口</string>
+    <string name="quit">出口</string>
+    <string name="welcome_basic">歡迎使用基本計算器</string>
+    <string name="welcome_scientific">歡迎使用科學計算器</string>
+    <string name="bye_bye">申請已關閉</string>
+</resources>

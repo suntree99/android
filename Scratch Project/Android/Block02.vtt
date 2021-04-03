@@ -1,0 +1,998 @@
+WEBVTT
+
+1
+00:00:00.700 --> 00:00:03.850
+In this video, I will show you how
+to provide a list of items for
+
+2
+00:00:03.850 --> 00:00:09.570
+the user to choose from and how to
+offer your app in multiple languages.
+
+3
+00:00:09.570 --> 00:00:15.000
+We will be using the example provided
+by the Block02 application.
+
+4
+00:00:15.000 --> 00:00:20.540
+In this application, the user is
+presented with a list of animals,
+
+5
+00:00:20.540 --> 00:00:26.470
+and when he clicks on one animal there
+is a small pop-up message at the bottom,
+
+6
+00:00:26.470 --> 00:00:30.380
+which indicates the name of
+the animal which was picked.
+
+7
+00:00:32.500 --> 00:00:38.244
+If I change the setting of this phone
+so the language is French,
+
+8
+00:00:48.711 --> 00:00:51.488
+the name of the animals are translated,
+and
+
+9
+00:00:51.488 --> 00:00:56.380
+if I click on one animal the text of
+the pop-up message is translated as well.
+
+10
+00:00:57.910 --> 00:00:59.880
+Start a new Android Studio project.
+
+11
+00:01:00.990 --> 00:01:05.940
+Call your application Block02,
+
+12
+00:01:05.940 --> 00:01:09.570
+click Next, Next again,
+
+13
+00:01:09.570 --> 00:01:15.850
+pick an Empty Activity, Next, and Finish.
+
+14
+00:01:15.850 --> 00:01:18.100
+Let's start with the XML file for
+the layout.
+
+15
+00:01:19.930 --> 00:01:21.794
+There is already a TextView,
+
+16
+00:01:21.794 --> 00:01:27.960
+except that it reads "Hello world" instead
+of "Pick an animal", so let's change that.
+
+17
+00:01:27.960 --> 00:01:34.675
+I will edit the XML file directly,
+I delete "Hello world",
+
+18
+00:01:34.675 --> 00:01:39.210
+and I replace it by "Pick an animal".
+
+19
+00:01:42.410 --> 00:01:46.960
+And here you notice this little,
+yellow light bulb here, and
+
+20
+00:01:46.960 --> 00:01:51.330
+if I click on it I can choose
+to "Extract string resource".
+
+21
+00:01:51.330 --> 00:01:52.240
+What does it mean?
+
+22
+00:01:52.240 --> 00:01:54.760
+Let's do that.
+
+23
+00:01:54.760 --> 00:01:58.530
+In fact, instead of hard-coding
+my string here,
+
+24
+00:01:58.530 --> 00:02:04.780
+I will define it in a separate
+file called strings.xml.
+
+25
+00:02:04.780 --> 00:02:08.760
+And here I will only give
+a pointer to this file.
+
+26
+00:02:08.760 --> 00:02:15.020
+So my resource name,
+that will be the text prompt.
+
+27
+00:02:15.020 --> 00:02:21.465
+Let's say that it's TextView_prompt.
+
+28
+00:02:26.041 --> 00:02:27.340
+And then I click OK.
+
+29
+00:02:28.420 --> 00:02:32.780
+And see that here my text is replaced by,
+instead, a reference.
+
+30
+00:02:32.780 --> 00:02:35.540
+If you want to see what is
+the text of the TextView,
+
+31
+00:02:35.540 --> 00:02:40.320
+then you need to look at
+@string in the strings.xml file
+
+32
+00:02:40.320 --> 00:02:43.855
+and look for the string which
+is labelled TextView_prompt.
+
+33
+00:02:43.855 --> 00:02:47.360
+So, let's go to this strings.xml file.
+
+34
+00:02:47.360 --> 00:02:54.660
+You will find it here in the 'resource'
+folder, in the 'values' subfolder.
+
+35
+00:02:54.660 --> 00:02:57.950
+Here is our strings.xml file.
+
+36
+00:02:57.950 --> 00:02:59.490
+So, then I click to open it.
+
+37
+00:03:00.760 --> 00:03:03.980
+And here you can see that we already
+have in fact two strings that
+
+38
+00:03:03.980 --> 00:03:04.970
+are defined already.
+
+39
+00:03:04.970 --> 00:03:09.000
+One that defines the name of the
+application, and the second one, the one
+
+40
+00:03:09.000 --> 00:03:15.441
+we've defined, called TextView_prompt,
+and which value is "Pick an animal".
+
+41
+00:03:17.460 --> 00:03:21.090
+And you see here that I can
+edit a translation for
+
+42
+00:03:21.090 --> 00:03:24.210
+a different language using
+the translation editor.
+
+43
+00:03:24.210 --> 00:03:26.280
+So let's open that up.
+
+44
+00:03:26.280 --> 00:03:29.470
+You click here, to the right,
+on the 'Open Editor'.
+
+45
+00:03:31.300 --> 00:03:37.313
+Now I can add a language here
+by clicking on the little
+
+46
+00:03:37.313 --> 00:03:42.515
+Earth symbol, and I'll add French locale.
+
+47
+00:03:45.173 --> 00:03:46.380
+Okay.
+
+48
+00:03:46.380 --> 00:03:51.431
+And here all the keys values which were
+not translated into this second
+
+49
+00:03:51.431 --> 00:03:56.462
+language appear in red here, so
+I need to translate this one.
+
+50
+00:03:56.462 --> 00:04:01.092
+I double-click here, and
+I enter the French translation for
+
+51
+00:04:01.092 --> 00:04:03.770
+"Pick an animal", which is 
+"Choisissez
+
+52
+00:04:05.464 --> 00:04:06.208
+un animal".
+
+53
+00:04:12.802 --> 00:04:16.737
+Okay, if I move back to
+the activity_main.xml and
+
+54
+00:04:16.737 --> 00:04:21.920
+I look at the result in the design view,
+here in English...
+
+55
+00:04:21.920 --> 00:04:25.160
+(Maybe I should put that a little larger.)
+
+56
+00:04:25.160 --> 00:04:30.008
+In English, it reads "Pick an animal",
+and if I click here on
+
+57
+00:04:30.008 --> 00:04:35.066
+the little earth symbol,
+I can change the locale to French.
+
+58
+00:04:35.066 --> 00:04:40.920
+And you will see that the text
+you read now is "Choisissez un animal".
+
+59
+00:04:40.920 --> 00:04:42.419
+Okay, let's go back to English.
+
+60
+00:04:45.252 --> 00:04:50.624
+And we have much more strings to
+define in our application,
+
+61
+00:04:50.624 --> 00:04:53.560
+so let's do that right now.
+
+62
+00:04:53.560 --> 00:04:58.720
+So you can either enter the string here,
+like that, for instance.
+
+63
+00:04:58.720 --> 00:05:02.790
+So I need a new string.
+
+64
+00:05:02.790 --> 00:05:06.233
+Let's say the name will be "dog".
+
+65
+00:05:08.694 --> 00:05:15.180
+Okay, in the default language,
+in English, it should display "Dog".
+
+66
+00:05:16.650 --> 00:05:18.815
+Okay, so that's one way of doing it.
+
+67
+00:05:18.815 --> 00:05:23.217
+And I can also do the same
+using the translation editor.
+
+68
+00:05:23.217 --> 00:05:27.394
+So since I'm working with a dog,
+let's write the French translation,
+
+69
+00:05:27.394 --> 00:05:28.360
+which is "chien".
+
+70
+00:05:30.420 --> 00:05:34.890
+And then I can add more strings
+using the plus symbol here.
+
+71
+00:05:34.890 --> 00:05:37.950
+So let's add one for the cat.
+
+72
+00:05:39.610 --> 00:05:41.480
+In English, that will be "Cat".
+
+73
+00:05:42.580 --> 00:05:46.330
+Okay, and let's translate that to "chat".
+
+74
+00:05:47.630 --> 00:05:50.990
+Next, we add a "Pig"
+
+75
+00:05:50.990 --> 00:05:58.600
+in English;
+it translates to "cochon" in French.
+
+76
+00:05:58.600 --> 00:06:07.980
+And the last one, last animal on our list
+was horse, which in French is "cheval".
+
+77
+00:06:07.980 --> 00:06:13.560
+Okay, now we have all our
+strings which are defined.
+
+78
+00:06:14.630 --> 00:06:20.400
+You can define strings, but
+you can also define arrays of strings.
+
+79
+00:06:20.400 --> 00:06:24.852
+And that will come in handy later in our
+application because we want to
+
+80
+00:06:24.852 --> 00:06:28.970
+display a list, and
+a list can feed on an array of strings.
+
+81
+00:06:28.970 --> 00:06:30.929
+So let's define a string array.
+
+82
+00:06:30.929 --> 00:06:34.935
+So it's  a string-array,
+
+83
+00:06:34.935 --> 00:06:39.338
+I need to give it a name, so
+
+84
+00:06:39.338 --> 00:06:44.562
+let's call it 'animalsArray'.
+
+85
+00:06:44.562 --> 00:06:50.006
+animalsArray...
+
+86
+00:06:50.006 --> 00:06:55.028
+And then I need to define
+the different items,
+
+87
+00:06:55.028 --> 00:07:00.456
+the different elements
+that make up this array.
+
+88
+00:07:00.456 --> 00:07:03.584
+Remember that before, in the xml file,
+
+89
+00:07:03.584 --> 00:07:08.001
+to refer to something defined
+in the strings.xml file,
+
+90
+00:07:08.001 --> 00:07:13.535
+I've used this construction @string/
+and then the name of the key.
+
+91
+00:07:13.535 --> 00:07:15.102
+I'll do exactly the same in here.
+
+92
+00:07:15.102 --> 00:07:19.008
+I want to refer to the first element
+of my array, this would be the dog,
+
+93
+00:07:19.008 --> 00:07:20.867
+I want to refer to this string.
+
+94
+00:07:20.867 --> 00:07:25.853
+So I just need to write @string/, and
+
+95
+00:07:25.853 --> 00:07:33.118
+then the name of the key of
+the string here, which is "dog".
+
+96
+00:07:36.749 --> 00:07:41.579
+And let's do the same for
+the three others animals.
+
+97
+00:07:41.579 --> 00:07:46.223
+So, I've got @string/cat.
+
+98
+00:07:46.223 --> 00:07:53.394
+I've got the item @string/pig.
+
+99
+00:07:55.290 --> 00:07:57.975
+And the last one,
+
+100
+00:07:57.975 --> 00:08:03.348
+the last item is @string/horse.
+
+101
+00:08:09.076 --> 00:08:10.353
+Okay.
+
+102
+00:08:10.353 --> 00:08:15.099
+Now I need to add a ListView
+to my graphical interface.
+
+103
+00:08:16.800 --> 00:08:19.160
+So you find that in
+the Containers section.
+
+104
+00:08:20.750 --> 00:08:23.620
+I'll put it right beneath the TextView.
+
+105
+00:08:27.010 --> 00:08:33.394
+And now I need to somehow
+associate the array of strings with
+
+106
+00:08:33.394 --> 00:08:39.660
+the name of the different
+animals in it to this ListView.
+
+107
+00:08:39.660 --> 00:08:46.103
+So in order to do that, I'm going to
+edit the MainActivity.java file now.
+
+108
+00:08:46.103 --> 00:08:51.141
+So first I need to retrieve
+a reference to the ListView.
+
+109
+00:08:51.141 --> 00:08:57.166
+So, I'll create a ListView object.
+
+110
+00:08:57.166 --> 00:09:02.294
+Let's call it listViewAnimals, and
+
+111
+00:09:02.294 --> 00:09:07.274
+then I'll use the findViewById method,
+
+112
+00:09:07.274 --> 00:09:10.219
+to retrieve this list.
+
+113
+00:09:15.480 --> 00:09:18.883
+Sorry, id.ListView.
+
+114
+00:09:23.494 --> 00:09:28.686
+And now, I need to create
+an adaptor in order to feed my
+
+115
+00:09:28.686 --> 00:09:37.320
+ListView with the content of the string
+array we defined in the strings.xml file.
+
+116
+00:09:37.320 --> 00:09:41.950
+So in order to do that I
+create an ArrayAdapter.
+
+117
+00:09:41.950 --> 00:09:48.500
+This array adapter will contain
+a string or a characters sequence.
+
+118
+00:09:48.500 --> 00:09:52.388
+Let's call it, adapterAnimals
+
+119
+00:09:52.388 --> 00:09:57.634
+for instance, ...animals.
+
+120
+00:10:01.400 --> 00:10:06.266
+And there is a special method to directly
+
+121
+00:10:06.266 --> 00:10:11.561
+create an array adaptor
+from a resource such
+
+122
+00:10:11.561 --> 00:10:17.230
+as the string array that
+we defined earlier.
+
+123
+00:10:17.230 --> 00:10:22.810
+So you can just choose 'create from
+resource', then provide a context -this-, and
+
+124
+00:10:22.810 --> 00:10:27.340
+then the name of
+the array you want to adapt.
+
+125
+00:10:27.340 --> 00:10:34.822
+So it's R.array.animalsArray.
+
+126
+00:10:34.822 --> 00:10:39.820
+And then you also need to provide the layout.
+
+127
+00:10:39.820 --> 00:10:46.260
+Android lets you specify different ways
+of displaying each item in your list.
+
+128
+00:10:46.260 --> 00:10:52.940
+We'll use one of the default ones,
+which is the "simple list item".
+
+129
+00:10:54.010 --> 00:11:03.200
+So android.R.layout.simple_list_item_1.
+
+130
+00:11:04.510 --> 00:11:07.404
+Okay.
+
+131
+00:11:07.404 --> 00:11:11.890
+So now that I have my adapter
+I can fill my list with it.
+
+132
+00:11:11.890 --> 00:11:19.599
+So listViewAnimals.setAdapter.
+
+133
+00:11:19.599 --> 00:11:23.410
+adapterAnimals.
+
+134
+00:11:23.410 --> 00:11:26.629
+Okay, now let's look at
+the results on the emulator.
+
+135
+00:11:32.247 --> 00:11:36.442
+That's my message here,
+my TextView "Pick an animal",
+
+136
+00:11:36.442 --> 00:11:39.259
+then I've got the list of animals.
+
+137
+00:11:40.490 --> 00:11:43.650
+Now, let's change the interface to French.
+
+138
+00:11:43.650 --> 00:11:48.500
+So in order to do that,
+I need to go into the Settings
+
+139
+00:11:50.410 --> 00:11:54.895
+and look for the Language & input section,
+
+140
+00:11:54.895 --> 00:11:58.120
+and here I need to change
+language here to French.
+
+141
+00:12:00.840 --> 00:12:01.340
+Okay.
+
+142
+00:12:02.760 --> 00:12:08.270
+Now let's go back to our application,
+Block02.
+
+143
+00:12:08.270 --> 00:12:10.100
+Okay, now it is displayed in French.
+
+144
+00:12:11.140 --> 00:12:15.935
+But here when I click
+an item of the list, nothing happens,
+
+145
+00:12:15.935 --> 00:12:20.430
+because we didn't associate
+any action with that.
+
+146
+00:12:20.430 --> 00:12:22.420
+So I'm going to show you how to do it.
+
+147
+00:12:22.420 --> 00:12:24.750
+Let's go back to the Java code.
+
+148
+00:12:27.910 --> 00:12:34.110
+One way of attaching action to a view
+is to add a listener to this view.
+
+149
+00:12:34.110 --> 00:12:35.242
+That's what we're going to do here.
+
+150
+00:12:35.242 --> 00:12:40.212
+So I take the listViewAnimals, and
+
+151
+00:12:40.212 --> 00:12:46.518
+then I attach to it an OnItemClickListener.
+
+152
+00:12:46.518 --> 00:12:51.374
+So I can either define an object
+which implements this interface in
+
+153
+00:12:51.374 --> 00:12:56.937
+a separate class or I can decide that
+it's my main activity which implements
+
+154
+00:12:56.937 --> 00:13:01.902
+the OnItemClickListener,
+like we did in the previous video.
+
+155
+00:13:01.902 --> 00:13:05.209
+Or I can just create
+an anonymous object here.
+
+156
+00:13:05.209 --> 00:13:06.811
+That's what I'm going to do.
+
+157
+00:13:06.811 --> 00:13:10.221
+new OnItemClickListener, and
+
+158
+00:13:10.221 --> 00:13:15.150
+I just have to define
+the OnClickItem method.
+
+159
+00:13:16.875 --> 00:13:21.675
+So we want to display a little
+pop-up message when the user selects
+
+160
+00:13:21.675 --> 00:13:23.265
+an item in the list.
+
+161
+00:13:23.265 --> 00:13:29.275
+So let's first define the message
+that we want to display to the user.
+
+162
+00:13:29.275 --> 00:13:34.539
+So there will be a string message,
+
+163
+00:13:34.539 --> 00:13:37.992
+but first it can reads
+
+164
+00:13:40.511 --> 00:13:41.336
+"Ok", for instance.
+
+165
+00:13:45.353 --> 00:13:47.610
+Now let's create the toast message.
+
+166
+00:13:48.900 --> 00:13:53.490
+I'm using the Toast class with
+the makeToast static method.
+
+167
+00:13:53.490 --> 00:13:59.670
+I provide the context and then
+the message to display which is message.
+
+168
+00:13:59.670 --> 00:14:04.960
+And the third parameter is for how long
+I want the message to be displayed.
+
+169
+00:14:04.960 --> 00:14:07.110
+I want a short period.
+
+170
+00:14:07.110 --> 00:14:12.500
+And don't forget to call the show method,
+otherwise nothing will happen.
+
+171
+00:14:14.650 --> 00:14:17.190
+Okay, let's check if this is working.
+
+172
+00:14:18.430 --> 00:14:21.680
+I'll run on the emulator again.
+
+173
+00:14:26.166 --> 00:14:28.171
+So now when I click on an item,
+
+174
+00:14:28.171 --> 00:14:32.120
+I've got the pop-up message
+at the bottom of the screen.
+
+175
+00:14:33.420 --> 00:14:40.720
+But now, I would like the item picked to
+appear in the text of the pop-up message.
+
+176
+00:14:40.720 --> 00:14:43.040
+So let's go back to the code
+in order to add that.
+
+177
+00:14:45.110 --> 00:14:50.060
+So here, you see that when an item is
+clicked and this method is called,
+
+178
+00:14:50.060 --> 00:14:55.720
+I'm given the position of the item
+which was clicked by the user.
+
+179
+00:14:55.720 --> 00:15:00.740
+So I can use this index to
+find the appropriate message,
+
+180
+00:15:00.740 --> 00:15:04.620
+appropriate string,
+in our array of strings here.
+
+181
+00:15:04.620 --> 00:15:08.850
+So, the message will be "OK", plus
+
+182
+00:15:10.760 --> 00:15:15.270
+the item in adapterAnimals
+
+183
+00:15:15.270 --> 00:15:19.879
+at position, at the index position.
+
+184
+00:15:19.879 --> 00:15:23.564
+Item at position.
+
+185
+00:15:26.872 --> 00:15:32.725
+Okay, and also, I don't want to print
+"OK" both in French and in English.
+
+186
+00:15:32.725 --> 00:15:34.775
+I want a different text here.
+
+187
+00:15:34.775 --> 00:15:39.675
+As before, I put my cursor here and
+
+188
+00:15:39.675 --> 00:15:42.515
+then I choose 'extract string resource'.
+
+189
+00:15:43.795 --> 00:15:50.555
+That will be our toastMessage,
+this will be the key for our string.
+
+190
+00:15:51.590 --> 00:15:58.250
+And then let's edit the strings.xml file.
+
+191
+00:15:58.250 --> 00:16:01.030
+Open the translator, it's open already.
+
+192
+00:16:01.030 --> 00:16:07.350
+Okay, so the text message in
+English will be "You picked...
+
+193
+00:16:09.750 --> 00:16:14.854
+such and such animal,
+and in French that would
+
+194
+00:16:14.854 --> 00:16:21.245
+be "Vous avez choisi"
+and followed by the name of the animal.
+
+195
+00:16:21.245 --> 00:16:25.989
+I put a space character here.
+
+196
+00:16:25.989 --> 00:16:28.218
+Okay, so let's try it out.
+
+197
+00:16:37.912 --> 00:16:42.835
+Okay, so when I click on "chat":
+
+198
+00:16:44.200 --> 00:16:47.581
+"Vous avez choisi chat"
+And let's move to English.
+
+199
+00:17:04.986 --> 00:17:07.945
+When I click on dog: "You picked dog".
+
+200
+00:17:10.325 --> 00:17:11.166
+In this video,
+
+201
+00:17:11.166 --> 00:17:15.920
+you've learned how to provide your
+application in multiple languages.
+
+202
+00:17:15.920 --> 00:17:19.300
+The first thing to do is to
+separate the definition of your
+
+203
+00:17:19.300 --> 00:17:24.040
+message strings from the structure
+of your application.
+
+204
+00:17:24.040 --> 00:17:31.140
+To do so, you define a set of keys and
+values in the strings.xml file,
+
+205
+00:17:31.140 --> 00:17:36.250
+and then you can refer to the strings
+that you've defined there,
+
+206
+00:17:36.250 --> 00:17:43.140
+either from your XML code using the
+@string followed by the name of the key,
+
+207
+00:17:43.140 --> 00:17:49.780
+or in your Java code by using
+R.string.the name of the key.
+
+208
+00:17:50.910 --> 00:17:56.010
+Then you can use a translations
+editor on the strings.xml
+
+209
+00:17:56.010 --> 00:18:01.890
+file in order to first define
+additional locale for your application,
+
+210
+00:18:01.890 --> 00:18:06.580
+and then, for each string that you've
+defined, provide a translation.
+
+211
+00:18:09.540 --> 00:18:14.800
+In this video, you've also learned how
+to provide a list of items to the user.
+
+212
+00:18:14.800 --> 00:18:18.850
+So for that you can use the ListView,
+which is a container view.
+
+213
+00:18:18.850 --> 00:18:23.240
+And you will use
+an ArrayAdapter to feed the list.
+
+214
+00:18:23.240 --> 00:18:28.420
+The ArrayAdapter will provide
+both the content of the of the list by
+
+215
+00:18:29.430 --> 00:18:33.750
+taking it from an array,
+it will also provide
+
+216
+00:18:33.750 --> 00:18:38.230
+the layout to be used to render
+the different items on your list.
+
+217
+00:18:39.230 --> 00:18:43.720
+If you want to react to the selection
+of an item of the list,
+
+218
+00:18:43.720 --> 00:18:47.220
+then you just need to add
+an OnItemClickListener.

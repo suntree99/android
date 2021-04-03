@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Count App</string>
+    <string name="app_desc">Aplikasi untuk keperluan kiraan anda</string>
+    <string name="select">Pilih keperluan anda!</string>
+    <string name="basic">Kalkulator</string>
+    <string name="scientific">Kalkulator saintifik</string>
+    <string name="quit">Keluar</string>
+    <string name="exit">Keluar</string>
+    <string name="welcome_basic">Selamat Datang di Kalkulator Asas</string>
+    <string name="welcome_scientific">Selamat Datang ke Kalkulator Saintifik</string>
+    <string name="bye_bye">App ditutup</string>
+</resources>

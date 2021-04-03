@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Count App</string>
+    <string name="app_desc">التطبيق لحاجتك العد</string>
+    <string name="select">حدد حاجتك!</string>
+    <string name="basic">آلة حاسبة</string>
+    <string name="scientific">حاسبة علمية</string>
+    <string name="exit">خروج</string>
+    <string name="quit">خروج</string>
+    <string name="welcome_basic">مرحبًا بك في الحاسبة الأساسية</string>
+    <string name="welcome_scientific">مرحبًا بك في الآلة الحاسبة العلمية</string>
+    <string name="bye_bye">تم إغلاق التطبيق</string>
+</resources>

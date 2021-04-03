@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <EditText
+            android:id="@+id/pesan"
+            android:layout_width="match_parent"
+            android:layout_height="@android:dimen/thumbnail_width"
+            android:layout_gravity="top"
+            android:layout_marginTop="45dp"
+            android:background="@android:color/background_light"
+            android:ems="10"
+            android:hint="Tekan Mic Ucapkan Pesan"
+            android:inputType="textMultiLine"
+            android:lines="@null"
+            android:maxLines="500"
+            android:minLines="400"
+            android:overScrollMode="always"
+            android:scrollHorizontally="true"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical" />
+
+        <ImageButton
+            android:id="@+id/speechbtn"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="top"
+            android:layout_marginBottom="@android:dimen/notification_large_icon_height"
+            android:layout_marginLeft="@android:dimen/app_icon_size"
+            android:layout_marginRight="@android:dimen/app_icon_size"
+            android:layout_marginTop="15dp"
+            android:adjustViewBounds="false"
+            android:backgroundTint="@android:color/holo_blue_light"
+            android:contentDescription=""
+            android:cropToPadding="false"
+            android:elevation="22dp"
+            android:src="@android:drawable/ic_btn_speak_now"
+            android:visibility="visible"
+            tools:ignore="ContentDescription,InefficientWeight,NewApi"
+            tools:style="@android:style/Widget.DeviceDefault.ImageButton" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageButton
+                android:id="@+id/pickcontact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:contentDescription="@string/gambar"
+                android:src="@drawable/garut" />
+
+            <EditText
+                android:id="@+id/nomorHp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="0.40"
+                android:background="@android:color/white"
+                android:hint="Tekan Mic Ucapkan Nama Kontak"
+                android:inputType="phone"
+                android:maxHeight="@android:dimen/app_icon_size"
+                android:textColor="@android:color/background_dark"
+                android:textColorHighlight="@android:color/background_light"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColorLink="@android:color/background_light"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnkirim"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="@android:dimen/app_icon_size"
+            android:layout_marginBottom="@android:dimen/thumbnail_width"
+            android:layout_marginEnd="@android:dimen/app_icon_size"
+            android:layout_marginStart="@android:dimen/app_icon_size"
+            android:layout_marginTop="@android:dimen/notification_large_icon_height"
+            android:layout_weight="0.10"
+            android:background="@drawable/dodol"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:backgroundTintMode="src_over"
+            android:elevation="24dp"
+            android:text="@string/kirim"
+            tools:ignore="InefficientWeight" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Count App</string>
+    <string name="app_desc">แอพที่คุณต้องการนับ</string>
+    <string name="select">เลือกความต้องการของคุณ!</string>
+    <string name="basic">เครื่องคิดเลข</string>
+    <string name="scientific">เครื่องคิดเลขวิทยาศาสตร์</string>
+    <string name="quit">ทางออก</string>
+    <string name="exit">ทางออก</string>
+    <string name="welcome_basic">ยินดีต้อนรับสู่เครื่องคิดเลขขั้นพื้นฐาน</string>
+    <string name="welcome_scientific">ยินดีต้อนรับสู่เครื่องคิดเลขวิทยาศาสตร์</string>
+    <string name="bye_bye">ปิดแอปพลิเคชัน</string>
+</resources>

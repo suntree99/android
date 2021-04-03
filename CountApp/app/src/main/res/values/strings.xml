@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Count App</string>
+    <string name="app_desc">The app for your count need</string>
+    <string name="select">Select your need!</string>
+    <string name="basic">Calculator</string>
+    <string name="scientific">Scientific Calculator</string>
+    <string name="exit">Exit</string>
+    <string name="quit">Quit</string>
+    <string name="welcome_basic">Welcome to Basic Calculator</string>
+    <string name="welcome_scientific">Welcome to Scientific Calculator</string>
+    <string name="bye_bye">Application Closed</string>
+</resources>

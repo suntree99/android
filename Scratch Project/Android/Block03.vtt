@@ -1,0 +1,659 @@
+WEBVTT
+
+1
+00:00:00.740 --> 00:00:04.460
+In this video I'll show you how to
+organize your views on the screen
+
+2
+00:00:04.460 --> 00:00:06.480
+using different layouts.
+
+3
+00:00:06.480 --> 00:00:09.880
+We use the application
+Block03 as an example.
+
+4
+00:00:09.880 --> 00:00:14.350
+In this application,
+the upper 30% of the screen
+
+5
+00:00:14.350 --> 00:00:19.482
+are occupied by a blue section which
+holds two buttons: a small button and
+
+6
+00:00:19.482 --> 00:00:24.188
+all of the remaining space is used
+up by another button, a big button.
+
+7
+00:00:24.188 --> 00:00:28.730
+Then below the blue section,
+we have nine buttons
+
+8
+00:00:28.730 --> 00:00:32.780
+positioned on a rose compass which
+is displayed in the background.
+
+9
+00:00:35.080 --> 00:00:37.100
+Start a new Android Studio project.
+
+10
+00:00:38.920 --> 00:00:41.881
+Call the application Block03.
+
+11
+00:00:41.881 --> 00:00:48.977
+Next, Next, choose an Empty Activity.
+
+12
+00:00:48.977 --> 00:00:52.880
+And Next, and Finish.
+
+13
+00:00:52.880 --> 00:00:58.080
+This time, we will work only with
+the activity_main.xml layout file.
+
+14
+00:00:58.080 --> 00:01:01.450
+Let's get rid of the default
+"Hello word" TextView.
+
+15
+00:01:02.460 --> 00:01:08.600
+And go to the XML file to change the
+relative layout into a linear layout.
+
+16
+00:01:10.400 --> 00:01:13.600
+You can also remove all the padding here.
+
+17
+00:01:15.950 --> 00:01:20.350
+Okay, so now our screen
+should be divided into rows.
+
+18
+00:01:20.350 --> 00:01:25.940
+So we need to specify that the orientation
+of this layout is vertical.
+
+19
+00:01:27.180 --> 00:01:32.960
+android:orientation="vertical"
+
+20
+00:01:34.630 --> 00:01:36.480
+Now the screen is divided into rows.
+
+21
+00:01:37.820 --> 00:01:45.310
+Let's first define the content of
+the first row as a linear layout.
+
+22
+00:01:45.310 --> 00:01:50.410
+The width of the layout will be equal
+to the one of the parent: match_parent.
+
+23
+00:01:51.450 --> 00:01:53.835
+And here, I'll put 0.
+
+24
+00:01:55.030 --> 00:01:58.000
+I'll explain to you why in a few minutes.
+
+25
+00:01:59.430 --> 00:02:03.120
+Okay, that will be our first component,
+and
+
+26
+00:02:03.120 --> 00:02:08.670
+in the second row,
+we'll put a relative layout.
+
+27
+00:02:08.670 --> 00:02:14.435
+Again, the width will match_parent, and
+for the height, right now, we only put 0.
+
+28
+00:02:17.825 --> 00:02:23.877
+We want to specify the height of
+each view of the linear layout and
+
+29
+00:02:23.877 --> 00:02:29.810
+relative layout to match 30 and
+70% of the screen.
+
+30
+00:02:29.810 --> 00:02:33.480
+So I'll say that this layout here,
+
+31
+00:02:35.140 --> 00:02:39.034
+adds up to 100,
+
+32
+00:02:41.433 --> 00:02:45.850
+and then I can define that the weight
+of this particular layout,
+
+33
+00:02:48.732 --> 00:02:52.440
+is 30.
+
+34
+00:02:54.050 --> 00:02:58.772
+And the weight of
+
+35
+00:02:58.772 --> 00:03:03.833
+this one is 70.
+
+36
+00:03:03.833 --> 00:03:07.526
+If you go to the design view,
+it will be difficult to notice but
+
+37
+00:03:07.526 --> 00:03:11.800
+if you put your mouse here,
+you can see a little dotted line here
+
+38
+00:03:11.800 --> 00:03:14.180
+that cuts the screen into two parts.
+
+39
+00:03:14.180 --> 00:03:19.050
+The linear layout here which
+occupies 30% of the screen and
+
+40
+00:03:19.050 --> 00:03:25.560
+the relative layout which
+occupies the remaining 70%.
+
+41
+00:03:25.560 --> 00:03:31.630
+To make the difference between
+the two layouts more visible,
+
+42
+00:03:31.630 --> 00:03:34.540
+we'll add a background
+color to the first one.
+
+43
+00:03:35.810 --> 00:03:40.746
+android:background and
+
+44
+00:03:40.746 --> 00:03:47.828
+let's use an existing Android color,
+
+45
+00:03:47.828 --> 00:03:55.130
+like I don't know, a nice bright blue.
+
+46
+00:03:55.130 --> 00:04:00.270
+Okay, that's more easy to see the
+difference between the two sections now.
+
+47
+00:04:00.270 --> 00:04:05.000
+And for the second section,
+we'll put a background image.
+
+48
+00:04:06.580 --> 00:04:10.238
+In order to do that,
+I'll copy an image into
+
+49
+00:04:10.238 --> 00:04:15.520
+the drawable folder from
+the resource folder.
+
+50
+00:04:17.600 --> 00:04:23.441
+And that into this one, okay?
+
+51
+00:04:23.441 --> 00:04:28.370
+And now I can use this image as
+
+52
+00:04:28.370 --> 00:04:34.328
+a background using @drawable and
+
+53
+00:04:34.328 --> 00:04:38.860
+then the name of the file.
+
+54
+00:04:40.070 --> 00:04:41.430
+Okay, let's look at the result.
+
+55
+00:04:46.340 --> 00:04:50.070
+Now I will add the small and
+big buttons here.
+
+56
+00:04:50.070 --> 00:04:52.313
+The small one and
+
+57
+00:04:52.313 --> 00:04:58.260
+a second one. Let's change the text
+on this one so it reads "small".
+
+58
+00:04:58.260 --> 00:05:02.700
+Let's call it button_small.
+
+59
+00:05:02.700 --> 00:05:06.508
+And let's change the text on this one so
+it reads "Big".
+
+60
+00:05:09.832 --> 00:05:12.110
+This will be the button_big.
+
+61
+00:05:14.090 --> 00:05:15.860
+Okay, and
+
+62
+00:05:15.860 --> 00:05:21.530
+then the height of this button should
+match the blue section: match_parent.
+
+63
+00:05:21.530 --> 00:05:27.470
+Okay, and we want this button to occupy
+
+64
+00:05:27.470 --> 00:05:33.520
+half of the space which is remaining
+after we place this small button.
+
+65
+00:05:35.220 --> 00:05:40.506
+So we're going to say that the total
+width of the layout amounts to,
+
+66
+00:05:40.506 --> 00:05:42.341
+for instance, 10.
+
+67
+00:05:44.435 --> 00:05:45.380
+Make it 10.
+
+68
+00:05:46.380 --> 00:05:50.640
+And then I want that after
+the small button is placed,
+
+69
+00:05:50.640 --> 00:05:54.370
+I want this one to take half
+of the remaining space.
+
+70
+00:05:54.370 --> 00:05:58.590
+It means that I want it to take 5.
+
+71
+00:05:58.590 --> 00:06:04.750
+So let's say that its width
+does not fit content anymore.
+
+72
+00:06:04.750 --> 00:06:06.720
+It's 0 pixel.
+
+73
+00:06:06.720 --> 00:06:13.165
+Then instead,
+I'll use its weight and this will be 5.
+
+74
+00:06:15.450 --> 00:06:19.840
+When looking to design view...
+that's what we wanted.
+
+75
+00:06:19.840 --> 00:06:25.400
+Now let's position the buttons
+around the compass here.
+
+76
+00:06:25.400 --> 00:06:28.090
+First, let's put the north button.
+
+77
+00:06:28.090 --> 00:06:34.411
+I want it aligned with
+the center of the screen and
+
+78
+00:06:34.411 --> 00:06:42.530
+with a small margin separating
+it from the top of the image.
+
+79
+00:06:43.540 --> 00:06:47.930
+Okay, let's call it North.
+
+80
+00:06:50.390 --> 00:06:56.574
+And that'll be our button_north.
+
+81
+00:06:56.574 --> 00:07:01.372
+Now let's change its background so
+it's easier to see.
+
+82
+00:07:08.834 --> 00:07:12.625
+Let's pick this gray for
+instance, that's fine, okay.
+
+83
+00:07:14.287 --> 00:07:17.099
+Now let's add the South button, so
+
+84
+00:07:17.099 --> 00:07:21.787
+the South button is aligned
+with the bottom of the parent,
+
+85
+00:07:21.787 --> 00:07:26.870
+bottom of the relative layout and
+it's centered horizontally.
+
+86
+00:07:28.550 --> 00:07:35.740
+And let's call it South and
+the button will be the button_South.
+
+87
+00:07:35.740 --> 00:07:41.445
+Okay, and let's put the same
+background as the previous one.
+
+88
+00:07:41.445 --> 00:07:47.151
+Now the East button is aligned
+with the right of the parent and
+
+89
+00:07:47.151 --> 00:07:49.800
+it's centered vertically.
+
+90
+00:07:56.487 --> 00:08:00.622
+button_East,
+then let's set the background here.
+
+91
+00:08:04.058 --> 00:08:09.171
+Let's do the same with the West
+button aligned with the left and
+
+92
+00:08:09.171 --> 00:08:10.921
+centered vertically,
+
+93
+00:08:23.139 --> 00:08:29.910
+change the background.
+Let's add now on the button at the center.
+
+94
+00:08:29.910 --> 00:08:35.660
+So I want it to be centered
+horizontally as well as vertically.
+
+95
+00:08:35.660 --> 00:08:42.172
+Sometimes it's not really
+easy to do it from here,
+
+96
+00:08:42.172 --> 00:08:46.870
+so I'll move to the text
+view in order to do that.
+
+97
+00:08:47.950 --> 00:08:50.570
+So let's look at the bottom of the file.
+
+98
+00:08:51.820 --> 00:08:56.988
+So this new button is in
+fact the center button so
+
+99
+00:08:56.988 --> 00:09:01.346
+let's call it button_center.
+
+100
+00:09:01.346 --> 00:09:05.492
+It's already centered horizontally but
+
+101
+00:09:05.492 --> 00:09:11.177
+instead of being aligned with
+the top of the button West,
+
+102
+00:09:11.177 --> 00:09:14.744
+I'd rather center it vertically.
+
+103
+00:09:15.980 --> 00:09:20.818
+Okay, now we need to add the four
+more buttons for northeast,
+
+104
+00:09:20.818 --> 00:09:23.990
+southeast, and so on and so forth.
+
+105
+00:09:23.990 --> 00:09:28.050
+Let's keep on editing
+the XML file from here.
+
+106
+00:09:28.050 --> 00:09:32.470
+I'll just copy this one and
+change a few things.
+
+107
+00:09:32.470 --> 00:09:38.200
+First, it doesn't read central but
+northeast so that would be button_
+
+108
+00:09:40.660 --> 00:09:46.340
+Northeast, and then I'll change
+information about the position.
+
+109
+00:09:46.340 --> 00:09:50.773
+So I'll specify that
+
+110
+00:09:50.773 --> 00:09:57.825
+it's located below the button_north,
+
+111
+00:09:57.825 --> 00:10:02.870
+and above the button_east.
+
+112
+00:10:04.990 --> 00:10:10.098
+Then it is located to the right
+
+113
+00:10:10.098 --> 00:10:14.617
+of the button_north, and
+
+114
+00:10:14.617 --> 00:10:20.128
+to the left of the button_east.
+
+115
+00:10:26.212 --> 00:10:32.109
+To the left of button_east.
+
+116
+00:10:32.109 --> 00:10:36.241
+Okay, let's look at the result
+in the graphical preview.
+
+117
+00:10:41.545 --> 00:10:45.200
+I've repeated this process
+with the three other buttons.
+
+118
+00:10:46.860 --> 00:10:49.940
+This is what it looks like.
+
+119
+00:10:49.940 --> 00:10:58.760
+If I run it on the emulator,
+I have the same result.
+
+120
+00:11:00.600 --> 00:11:05.810
+In this video, you've learned how to
+organize multiple views on the screen.
+
+121
+00:11:05.810 --> 00:11:11.890
+In order to do that, you use layouts
+such as LinearLayout or RelativeLayout.
+
+122
+00:11:11.890 --> 00:11:15.410
+When you use a LinearLayout,
+you need to specify its orientation,
+
+123
+00:11:15.410 --> 00:11:18.330
+whether vertical or horizontal.
+
+124
+00:11:18.330 --> 00:11:23.670
+And if you want to allow a view to
+occupy a fraction of the layout,
+
+125
+00:11:23.670 --> 00:11:26.900
+you define the weightSum for
+the layout, and
+
+126
+00:11:26.900 --> 00:11:32.940
+then you position either the width or
+the height of the view to 0,
+
+127
+00:11:32.940 --> 00:11:36.110
+and you specify the portion
+
+128
+00:11:36.110 --> 00:11:40.170
+of the space you want this view to
+occupy using the weight attribute.
+
+129
+00:11:41.200 --> 00:11:47.474
+When you're using a RelativeLayout,
+you need to give each view an ID and
+
+130
+00:11:47.474 --> 00:11:53.226
+then you can position views in
+relation to a each other using below,
+
+131
+00:11:53.226 --> 00:11:58.373
+above, to right of,
+plus the name of the reference view.
+
+132
+00:11:58.373 --> 00:12:01.481
+You've also learned how to
+display a background image.
+
+133
+00:12:01.481 --> 00:12:03.004
+In order to do that,
+
+134
+00:12:03.004 --> 00:12:09.000
+you first copy your file into the drawable
+folder from the resource folder.
+
+135
+00:12:09.000 --> 00:12:13.360
+Something I forgot to mention in the video
+is that the file name should match
+
+136
+00:12:13.360 --> 00:12:15.630
+the rules for Java identifiers.
+
+137
+00:12:15.630 --> 00:12:17.720
+that means it should start
+with a letter and
+
+138
+00:12:17.720 --> 00:12:22.050
+contain only letters, numbers and
+the underscore character.
+
+139
+00:12:23.490 --> 00:12:27.480
+Then you can access this file and
+use it as a background.
+
+140
+00:12:27.480 --> 00:12:31.867
+In the XML file using
+background=@drawable/ and
+
+141
+00:12:31.867 --> 00:12:35.962
+then the name of the file
+without the extension.
+
+142
+00:12:35.962 --> 00:12:41.673
+And in the Java file you just use
+the setBackgroundResource method and
+
+143
+00:12:41.673 --> 00:12:45.230
+then R.drawable. the name of the file.

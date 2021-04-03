@@ -1,0 +1,474 @@
+WEBVTT
+
+1
+00:00:00.660 --> 00:00:05.391
+In this video, I'll show you a simple way
+to have your application play audio files.
+
+2
+00:00:05.391 --> 00:00:10.320
+We'll use the Block04 application as
+an example but I will demonstrate it
+
+3
+00:00:10.320 --> 00:00:14.870
+on my phone because you wouldn't be
+able to hear the sound on the emulator.
+
+4
+00:00:14.870 --> 00:00:17.650
+The application is composed
+of two buttons, 'Play' and
+
+5
+00:00:17.650 --> 00:00:20.530
+'Pause', and a Switch 'looping'.
+
+6
+00:00:20.530 --> 00:00:24.220
+If I click the Play button,
+the music starts, and
+
+7
+00:00:24.220 --> 00:00:27.620
+if I click the Pause button,
+the music is interrupted.
+
+8
+00:00:27.620 --> 00:00:33.520
+If I click Play again, the music
+resumes up to the end of the file.
+
+9
+00:00:33.520 --> 00:00:37.490
+When the end of the file is reached,
+the music is stopped.
+
+10
+00:00:37.490 --> 00:00:42.340
+Now if I click the 'looping' Switch on, and
+
+11
+00:00:42.340 --> 00:00:47.730
+I click Play, this time the music
+will play to the end of the file.
+
+12
+00:00:47.730 --> 00:00:52.674
+When the end is reached,
+the music starts over automatically
+
+13
+00:00:52.674 --> 00:00:56.772
+without requiring me to
+hit the Play button again.
+
+14
+00:01:00.371 --> 00:01:03.089
+Start a new Android Studio project.
+
+15
+00:01:03.089 --> 00:01:05.039
+Name the application Block04.
+
+16
+00:01:07.384 --> 00:01:11.950
+Click Next, keep the API to Level 16.
+
+17
+00:01:11.950 --> 00:01:19.419
+Click Next, pick an empty activity,
+Next and Finish.
+
+18
+00:01:19.419 --> 00:01:24.830
+Let's start by creating the beginning
+of the graphical user interface.
+
+19
+00:01:24.830 --> 00:01:29.002
+Let's go to the activity_main.xml file and
+
+20
+00:01:29.002 --> 00:01:33.980
+first get rid of
+the default TextView "hello world".
+
+21
+00:01:33.980 --> 00:01:37.000
+Then I drag the first button here.
+
+22
+00:01:37.000 --> 00:01:43.510
+That will be our button to trigger the
+beginning of the music, to play the music.
+
+23
+00:01:43.510 --> 00:01:46.240
+Let's associate an action
+with this button.
+
+24
+00:01:46.240 --> 00:01:51.982
+So OnClick, call the playMusic method.
+
+25
+00:01:53.460 --> 00:02:00.240
+Now let's add the second button right
+below it, which is the pause button and
+
+26
+00:02:00.240 --> 00:02:04.671
+OnClick
+it'll call the pauseMusic method.
+
+27
+00:02:04.671 --> 00:02:12.115
+Now let's go to the MainActivity.java
+file in order to define these two methods.
+
+28
+00:02:12.115 --> 00:02:14.945
+If you remember from previous videos,
+
+29
+00:02:14.945 --> 00:02:20.605
+this method should have
+a public void declaration.
+
+30
+00:02:21.855 --> 00:02:28.190
+The first one was playMusic and even
+though I know that if playMusic is called,
+
+31
+00:02:28.190 --> 00:02:32.850
+it can only be because of the Play button.
+
+32
+00:02:32.850 --> 00:02:35.890
+I still need to specify a View parameter.
+
+33
+00:02:38.020 --> 00:02:41.122
+The second method is pauseMusic.
+
+34
+00:02:50.318 --> 00:02:53.803
+Now we need to add a resource
+to our application,
+
+35
+00:02:53.803 --> 00:02:57.730
+to hold the music file
+that we want to play.
+
+36
+00:02:57.730 --> 00:03:02.570
+I right-click on the app folder here,
+select New,
+
+37
+00:03:02.570 --> 00:03:09.120
+Android resource directory and
+in the Resource type, I choose raw.
+
+38
+00:03:10.930 --> 00:03:15.780
+I keep all the other default choices and
+click OK.
+
+39
+00:03:15.780 --> 00:03:21.150
+This creates a new folder
+here in the Resource folder.
+
+40
+00:03:21.150 --> 00:03:25.907
+In this folder, I copy my mp3 file,
+
+41
+00:03:25.907 --> 00:03:30.183
+so Copy that and Paste it here.
+
+42
+00:03:35.127 --> 00:03:39.810
+Now that this resource is
+incorporated into my application,
+
+43
+00:03:39.810 --> 00:03:44.862
+I can use it using the MediaPlayer
+class from the Android API.
+
+44
+00:03:46.050 --> 00:03:52.067
+I create a MediaPlayer object,
+let's call it pianoMusic.
+
+45
+00:03:52.067 --> 00:03:58.284
+In the onCreate method I'll
+initialize this object.
+
+46
+00:03:58.284 --> 00:04:01.212
+So pianoMusic,
+
+47
+00:04:01.212 --> 00:04:06.870
+I'll use the create method
+from the MediaPlayer
+
+48
+00:04:06.870 --> 00:04:12.810
+to create a MediaPlayer associated
+with resource that I can find in R.row,
+
+49
+00:04:12.810 --> 00:04:16.740
+and then the name of the file
+without the extension.
+
+50
+00:04:16.740 --> 00:04:17.480
+That's 'piano'.
+
+51
+00:04:19.650 --> 00:04:22.520
+Once this is done,
+it's really easy to play the music.
+
+52
+00:04:22.520 --> 00:04:27.778
+You just have to call the start method
+on your player, so pianoMusic.start.
+
+53
+00:04:27.778 --> 00:04:33.974
+The pause is similar,
+it's pianoMusic.pause.
+
+54
+00:04:35.060 --> 00:04:39.520
+But of course, we don't want the user
+to click on pause if the music
+
+55
+00:04:39.520 --> 00:04:44.325
+is paused already, so we will only do
+the pause thing if the music is playing.
+
+56
+00:04:44.325 --> 00:04:49.430
+If pianoMusic.isPlaying,
+
+57
+00:04:49.430 --> 00:04:54.460
+then I'll call the pianoMusic.pause.
+
+58
+00:04:54.460 --> 00:04:57.518
+Now let's see how this
+sounds on the emulator.
+
+59
+00:05:02.149 --> 00:05:08.523
+I click Play and Pause,
+the music is stopped.
+
+60
+00:05:08.523 --> 00:05:10.554
+Let's click Play again.
+
+61
+00:05:10.554 --> 00:05:13.666
+[MUSIC]
+
+62
+00:05:13.666 --> 00:05:16.650
+And it runs up to the end of the file.
+
+63
+00:05:16.650 --> 00:05:20.728
+The quality of the sound is not great
+because it's on the emulator but
+
+64
+00:05:20.728 --> 00:05:24.020
+on a real device,
+it will sound much nicer.
+
+65
+00:05:27.100 --> 00:05:31.410
+Now I will add the little switch
+to let the user decide whether
+
+66
+00:05:31.410 --> 00:05:36.810
+the music should loop when it
+reaches the end of the file.
+
+67
+00:05:36.810 --> 00:05:44.820
+Let's go back to the design view of
+the user interface and grab a switch.
+
+68
+00:05:46.900 --> 00:05:48.560
+Let's put it here.
+
+69
+00:05:48.560 --> 00:05:53.900
+I change the label so it reads 'looping' and
+
+70
+00:05:53.900 --> 00:05:57.730
+let's change that to 'switch_looping'.
+
+71
+00:06:01.250 --> 00:06:05.996
+Now from the Java code,
+I need to get a reference to
+
+72
+00:06:05.996 --> 00:06:11.979
+this Switch object,
+
+73
+00:06:11.979 --> 00:06:21.175
+switch_looping, I use
+the findViewById method, as usual.
+
+74
+00:06:21.175 --> 00:06:26.060
+R.id.switch_looping.
+
+75
+00:06:26.060 --> 00:06:30.500
+Remember that you need to cast
+that because findViewById returns
+
+76
+00:06:30.500 --> 00:06:33.610
+a generic View, not a specific switch.
+
+77
+00:06:35.040 --> 00:06:41.330
+Now that I have a reference to the switch,
+I can associate a listener to it so that
+
+78
+00:06:41.330 --> 00:06:46.818
+when the user changes the value of the
+switch from off to on, I can do something.
+
+79
+00:06:46.818 --> 00:06:54.540
+So switch_looping.setOnCheckedChangeListener.
+
+80
+00:06:56.220 --> 00:07:02.750
+Then I'll create an anonymous object
+here onCheckedChangeListener.
+
+81
+00:07:02.750 --> 00:07:06.750
+I just need to implement
+this method onCheckedChange.
+
+82
+00:07:06.750 --> 00:07:12.420
+So that means that the user flipped
+the button and here with this boolean
+
+83
+00:07:12.420 --> 00:07:16.880
+here I can know whether the position
+of the switch is on or off.
+
+84
+00:07:17.980 --> 00:07:23.610
+What I want to do is to change
+the value of the isLooping,
+
+85
+00:07:23.610 --> 00:07:28.898
+a characteristic of the player, depending
+on the value of the variable isChecked.
+
+86
+00:07:28.898 --> 00:07:33.430
+So playingMusic.setLooping.
+
+87
+00:07:33.430 --> 00:07:38.740
+If the looping switch is checked,
+I want the piano music to loop, so
+
+88
+00:07:38.740 --> 00:07:45.050
+setLooping to isChecked and that's it.
+
+89
+00:07:45.050 --> 00:07:47.160
+Let's listen to the result
+on the emulator.
+
+90
+00:07:50.450 --> 00:07:55.820
+If I click the Play
+button without checking
+
+91
+00:07:55.820 --> 00:08:01.890
+the Looping switch, when the music
+reaches the end of the file, it stops.
+
+92
+00:08:01.890 --> 00:08:06.610
+Now let's change the switch here so
+looping is on.
+
+93
+00:08:06.610 --> 00:08:08.207
+If I play the music again-
+
+94
+00:08:08.207 --> 00:08:11.774
+[MUSIC]
+
+95
+00:08:11.774 --> 00:08:17.160
+When it reaches the end,
+like now, it starts over
+
+96
+00:08:17.160 --> 00:08:22.947
+without requiring me to
+press the Play button again.
+
+97
+00:08:26.847 --> 00:08:30.610
+In this video,
+you've learned how to play an audio file.
+
+98
+00:08:30.610 --> 00:08:37.700
+You first create a raw folder in your
+resource directory to hold your audio files
+
+99
+00:08:37.700 --> 00:08:44.520
+and then you create a MediaPlayer object
+using the MediaPlayer.create method.
+
+100
+00:08:44.520 --> 00:08:50.549
+After that, you can use multiple methods
+on this media players such as start,
+
+101
+00:08:50.549 --> 00:08:55.670
+pause, setLooping to control how
+is your audio file playing

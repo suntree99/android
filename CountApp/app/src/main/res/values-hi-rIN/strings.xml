@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Count App</string>
+    <string name="app_desc">अपनी गिनती की जरूरत के लिए एप्लिकेशन</string>
+    <string name="select">अपनी जरूरत का चयन करें!</string>
+    <string name="basic">कैलकुलेटर</string>
+    <string name="scientific">साइंटिफ़िक कैलकुलेटर</string>
+    <string name="exit">बाहर जाएं</string>
+    <string name="quit">बाहर जाएं</string>
+    <string name="welcome_basic">बेसिक कैलकुलेटर में आपका स्वागत है</string>
+    <string name="welcome_scientific">वैज्ञानिक गणक में आपका स्वागत है</string>
+    <string name="bye_bye">आवेदन बंद हो गया</string>
+</resources>

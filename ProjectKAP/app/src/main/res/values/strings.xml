@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ProjectKAP</string>
+    <string name="jumlah">Masukkan jumlah dodol yang anda inginkan</string>
+    <string name="hasil">hasilnya</string>
+    <string name="keterangan">Dodol Garut adalah sejenis makanan dodol yang berasal dari garut</string>
+    <string name="cetak">cetak</string>
+    <string name="aaa">aaa</string>
+</resources>

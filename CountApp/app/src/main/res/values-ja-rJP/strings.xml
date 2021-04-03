@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Count App</string>
+    <string name="app_desc">あなたのカウントの必要性のためのアプリ</string>
+    <string name="select">ニーズを選択してください！</string>
+    <string name="basic">電卓</string>
+    <string name="scientific">関数電卓</string>
+    <string name="exit">出口</string>
+    <string name="quit">出口</string>
+    <string name="welcome_basic">基本的な計算機へようこそ</string>
+    <string name="welcome_scientific">関数電卓へようこそ</string>
+    <string name="bye_bye">申し込みは終了しました</string>
+</resources>

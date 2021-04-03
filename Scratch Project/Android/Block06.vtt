@@ -1,0 +1,464 @@
+WEBVTT
+
+1
+00:00:00.660 --> 00:00:04.730
+In this video, we'll be using
+the application Block06 as an example.
+
+2
+00:00:04.730 --> 00:00:07.180
+I'll show you how to display an image and
+
+3
+00:00:07.180 --> 00:00:12.230
+how to use a slider to let the user
+tune the color of the displayed image.
+
+4
+00:00:12.230 --> 00:00:16.260
+Let's start a new Android project.
+
+5
+00:00:18.120 --> 00:00:19.780
+Name the application Block06.
+
+6
+00:00:23.130 --> 00:00:23.860
+Click Next.
+
+7
+00:00:25.910 --> 00:00:26.580
+Next.
+
+8
+00:00:26.580 --> 00:00:28.790
+Select an Empty Activity.
+
+9
+00:00:28.790 --> 00:00:29.750
+Next.
+
+10
+00:00:29.750 --> 00:00:30.580
+And finish.
+
+11
+00:00:32.230 --> 00:00:35.790
+I will start by setting up
+the graphical user interface.
+
+12
+00:00:35.790 --> 00:00:40.310
+So I'm building a linear layout,
+not a relative one, and
+
+13
+00:00:40.310 --> 00:00:43.087
+its orientation will be vertical.
+
+14
+00:00:47.545 --> 00:00:53.470
+I can get rid of this padding here and
+we can also delete the text view.
+
+15
+00:00:54.720 --> 00:00:55.510
+Okay.
+
+16
+00:00:55.510 --> 00:00:58.140
+Now, in the first row
+I'll place an image view.
+
+17
+00:00:58.140 --> 00:01:05.410
+The width of this image view will
+match the width of the content.
+
+18
+00:01:05.410 --> 00:01:07.470
+So, wrap content.
+
+19
+00:01:07.470 --> 00:01:13.050
+As for the height I'll put
+a zero because I want to use
+
+20
+00:01:13.050 --> 00:01:20.280
+a percentage of the screen
+not fixed dimensions so
+
+21
+00:01:20.280 --> 00:01:23.150
+instead I need to put an Android weight.
+
+22
+00:01:24.940 --> 00:01:30.270
+And I want to occupy about 20% of
+the screen so I'll put 2 here.
+
+23
+00:01:31.800 --> 00:01:36.300
+And the second ImageView will be larger.
+
+24
+00:01:36.300 --> 00:01:37.810
+Let's make it right now.
+
+25
+00:01:37.810 --> 00:01:42.800
+The second ImageView will match
+the width of the screen,
+
+26
+00:01:42.800 --> 00:01:48.180
+the weight will be 0 dp because
+
+27
+00:01:48.180 --> 00:01:52.780
+here again we're going to mention,
+we're going to set the weight.
+
+28
+00:01:53.875 --> 00:01:58.480
+Android weight, this time will be 8.
+
+29
+00:01:59.560 --> 00:02:07.026
+Okay, now in between the two
+ImageViews I will set SeekBar.
+
+30
+00:02:11.066 --> 00:02:17.787
+It will match the parent, and
+the height will wrap the content.
+
+31
+00:02:17.787 --> 00:02:22.634
+I can also specify
+the maximum value that this
+
+32
+00:02:22.634 --> 00:02:28.003
+SeekBar will allow me to choose,
+so Android Max.
+
+33
+00:02:32.508 --> 00:02:35.224
+Will be 255.
+
+34
+00:02:37.428 --> 00:02:42.818
+And we'll need to be able to refer
+to this seekBar from the java code,
+
+35
+00:02:42.818 --> 00:02:45.686
+so let's add also an ID for it.
+
+36
+00:02:45.686 --> 00:02:51.940
+It'll be seekBar_tuner because we'll
+
+37
+00:02:51.940 --> 00:02:58.633
+use it to tune the color of our image.
+
+38
+00:03:01.650 --> 00:03:07.140
+So that's the first image view occupying
+approximately 20% of the screen.
+
+39
+00:03:07.140 --> 00:03:12.440
+The SeekBar, and this space here is
+reserved to display another image,
+
+40
+00:03:12.440 --> 00:03:16.118
+but we didn't specify which image yet,
+so let's do that.
+
+41
+00:03:16.118 --> 00:03:22.600
+In the MainActivity.java I
+first retrieve a reference to
+
+42
+00:03:22.600 --> 00:03:27.530
+this ImageView,
+let's call it imageView_large.
+
+43
+00:03:28.890 --> 00:03:32.495
+And I will retrieve it the usual way,
+
+44
+00:03:32.495 --> 00:03:38.450
+using the findViewById method
+R.id.imageviewlarge.
+
+45
+00:03:38.450 --> 00:03:43.800
+Okay, and now that I've got
+a reference on the image,
+
+46
+00:03:43.800 --> 00:03:50.560
+I can define which picture I
+want to be displayed in it,
+
+47
+00:03:50.560 --> 00:03:55.530
+using the setImageResource method,
+setImageResource.
+
+48
+00:03:55.530 --> 00:03:58.960
+And here I give the ID for my resource.
+
+49
+00:03:58.960 --> 00:04:03.802
+It's R.drawable and drawing.
+
+50
+00:04:03.802 --> 00:04:05.770
+Okay.
+
+51
+00:04:05.770 --> 00:04:12.560
+And now what we need to do is to
+associate some action with the SeekBar.
+
+52
+00:04:12.560 --> 00:04:16.620
+So, first let's retrieve
+a reference to the SeekBar.
+
+53
+00:04:16.620 --> 00:04:18.360
+Let's call it tuner.
+
+54
+00:04:18.360 --> 00:04:24.986
+So that would be SeekBar findViewById
+
+55
+00:04:24.986 --> 00:04:31.390
+R.id.SeekBar_tuner, and
+
+56
+00:04:31.390 --> 00:04:38.130
+the listener which allows you
+to get notified when the user
+
+57
+00:04:38.130 --> 00:04:43.420
+scrolls the SeekBar is
+called onSeekBarChangeListener.
+
+58
+00:04:46.560 --> 00:04:52.370
+And let's create a new object for
+that, okay.
+
+59
+00:04:52.370 --> 00:04:56.040
+And here you notice that you have
+3 methods that you need to define.
+
+60
+00:04:56.040 --> 00:05:00.480
+This one is called when the user
+starts touching the SeekBar, and
+
+61
+00:05:00.480 --> 00:05:03.890
+this one when the user stops touching it.
+
+62
+00:05:03.890 --> 00:05:06.760
+And that's where we want
+to perform some action.
+
+63
+00:05:06.760 --> 00:05:10.640
+But you notice that here we
+have no clue about the value
+
+64
+00:05:10.640 --> 00:05:14.720
+taken by the SeekBar when
+the user is done touching it.
+
+65
+00:05:16.010 --> 00:05:20.210
+So that's the reason why we need
+to use this method as well.
+
+66
+00:05:20.210 --> 00:05:23.690
+This one is called,
+each time the value changes,
+
+67
+00:05:23.690 --> 00:05:29.320
+you can get this value by using
+the progress parameter here.
+
+68
+00:05:29.320 --> 00:05:32.290
+So each time the value is changed,
+
+69
+00:05:32.290 --> 00:05:37.680
+we want to remember that in order to be
+able to use the last picked value here.
+
+70
+00:05:37.680 --> 00:05:41.660
+So let's create an int variable here,
+
+71
+00:05:41.660 --> 00:05:45.504
+lastProgress, okay.
+
+72
+00:05:45.504 --> 00:05:54.029
+And here we can set a lastProgress
+to the current progress.
+
+73
+00:05:56.170 --> 00:05:58.210
+And when this method is called,
+
+74
+00:05:58.210 --> 00:06:03.930
+we're going to use the value of last
+progress to adjust the color of our image.
+
+75
+00:06:03.930 --> 00:06:08.470
+So in order to do that we
+can apply on our image,
+
+76
+00:06:08.470 --> 00:06:13.020
+which is called imageView_Large,
+
+77
+00:06:13.020 --> 00:06:17.140
+we can apply a filter
+using setColorFilter.
+
+78
+00:06:19.110 --> 00:06:27.360
+And here we can provide
+a color using it's RGB value.
+
+79
+00:06:27.360 --> 00:06:32.470
+So alpha would be 255 and
+
+80
+00:06:32.470 --> 00:06:37.810
+then for
+the red value I would put zero, for
+
+81
+00:06:37.810 --> 00:06:45.045
+the green value I would use the value
+chosen by the user using the seek bar.
+
+82
+00:06:45.045 --> 00:06:47.440
+And for the blue value, let's do, for
+
+83
+00:06:47.440 --> 00:06:52.390
+instance the opposite on
+this minus lastProgress.
+
+84
+00:06:53.460 --> 00:06:56.147
+Okay, now let's try that on the emulator.
+
+85
+00:07:02.543 --> 00:07:06.584
+While I move the cursor to the right or
+left,
+
+86
+00:07:06.584 --> 00:07:13.060
+nothing happens except that the last
+progress variable is changed.
+
+87
+00:07:13.060 --> 00:07:18.863
+And when I release the cursor, then the
+onStopTrackingTouch method is called and
+
+88
+00:07:18.863 --> 00:07:21.987
+the color filter is
+applied to the image.
+
+89
+00:07:26.642 --> 00:07:30.005
+In this video I've shown you
+how to display an image.
+
+90
+00:07:30.005 --> 00:07:33.925
+First, you need to create an ImageView
+in your graphical user interface.
+
+91
+00:07:33.925 --> 00:07:38.575
+Next, you need to place your
+image file in the drawable folder
+
+92
+00:07:38.575 --> 00:07:40.815
+of your resource directory.
+
+93
+00:07:40.815 --> 00:07:44.815
+You must make sure that the file
+name starts with a letter and
+
+94
+00:07:44.815 --> 00:07:50.570
+contains only letters, no capitals,
+numbers underscore and dot.
+
+95
+00:07:50.570 --> 00:07:56.265
+After that, if you want to specify which
+image file to associate with your image
+
+96
+00:07:56.265 --> 00:08:03.080
+view in the XML layout file, then you use
+the source property of the ImageView,
+
+97
+00:08:03.080 --> 00:08:08.560
+and you use the @drawable keyword
+to reach the image resource.
+
+98
+00:08:08.560 --> 00:08:10.865
+And if you want to do
+that from your java code,
+
+99
+00:08:10.865 --> 00:08:16.240
+then in that case you use a setImageResource 
+method on your image view,
+
+100
+00:08:16.240 --> 00:08:19.800
+and you use R.drawable.the
+name of the file.
