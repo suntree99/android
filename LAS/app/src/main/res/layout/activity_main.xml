@@ -12,10 +12,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:fontFamily="cursive"
         android:text="Selamat Datang\nDi aplikasi LAS (Layanan Aduan Sampah)"
         android:textAlignment="center"
         android:textColor="#FFEB3B"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,20 +36,22 @@
         android:id="@+id/tv_sitapemasam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LAS"
+        android:text="L A S"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintVertical_bias="0.48" />
 
     <TextView
         android:id="@+id/tv_kepanjangan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
         android:text="Sistem Informasi\nPelayanan pengaduan sampah"
         android:textAlignment="center"
         android:textColor="#FFFD88"
@@ -68,9 +72,10 @@
 
     <TextView
         android:id="@+id/tv_uptd"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="30dp"
+        android:background="#80673AB7"
         android:text="UPTD Pengelolaan Sampah Wilayah V\nKabupaten Tangerang"
         android:textAlignment="center"
         android:textColor="#FFFFFF"

@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/et_item_name"
+        android:id="@+id/et_nama"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -35,10 +35,10 @@
         android:layout_marginTop="25dp"
         android:layout_marginStart="50dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_item_name" />
+        app:layout_constraintTop_toBottomOf="@+id/et_nama" />
 
     <EditText
-        android:id="@+id/et_brand"
+        android:id="@+id/et_nik"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -57,7 +57,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginStart="50dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_brand" />
+        app:layout_constraintTop_toBottomOf="@+id/et_nik" />
 
 
     <EditText
