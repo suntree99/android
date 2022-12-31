@@ -10,11 +10,10 @@ Codelab Fragment di Activity
 - Language : 
 
 ## Step 1
-Mengatur activity_main.xml dengan FrameLayout sebagai tempat Fragment
+Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frame_container"
     android:layout_width="match_parent"
