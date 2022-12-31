@@ -20,7 +20,7 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
     android:layout_height="match_parent"/>
 ```
 
-## Perpindahan Antar Fragment Pada Activity Yang Sama 
+## Menampilkan Fragment Pada Activity 
 - Buat Fragment baru, `klik kanan pada project -> New -> Fragment -> Fragment (Blank)`
 - Setup Fragment, name: `HomeFragment`, layout name : `fragment_home`, dan pilih source language yang digunakan
 - Atur `fragment_home.xml` seperti berikut:
@@ -80,6 +80,8 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 								Bundle savedInstanceState) {
 			// Inflate the layout for this fragment
 			return inflater.inflate(R.layout.fragment_home, container, false);
+			// mengubah layout xml menjadi object viewgroup dengan metode inflate()
+			// inflate(layout fragment, layout activity (root), ditanamkan atau dipisah dengan root)
 		}
 	}
 	```
@@ -92,20 +94,19 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 								Bundle savedInstanceState) {
 
 			return inflater.inflate(R.layout.fragment_home, container, false);
-			// mengubah layout xml menjadi object viewgroup dengan metode inflate()
-			// inflate(layout fragment, layout activity (root), ditanamkan atau dipisah dengan root)
 		}
 	
 		@Override
-		public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) { // Dipanggil setelah oCreateView
+		public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) { // Digunakan untuk mengiisiasi view dan mengatur actionnya
 			super.onViewCreated(view, savedInstanceState);
 
-			Button btnCategory = view.findViewById(R.id.btn_category); // Digunakan untuk mengiisiasi view
-			// penambahan view. menunjukkan object view berada di fragment bukan di root
-			btnCategory.setOnClickListener(this); // dan mengatur actionnya
+			Button btnCategory = view.findViewById(R.id.btn_category); // penambahan view. menunjukkan object view berada di fragment bukan di root
+			btnCategory.setOnClickListener(this);
 		}
+
 		@Override
 		public void onClick(View v) {
+
 		}
 	}
 	```
@@ -116,19 +117,93 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	
-		FragmentManager mFragmentManager = getSupportFragmentManager(); // Menginstansiasi Fragment Manager
+		FragmentManager mFragmentManager = getSupportFragmentManager(); // Menginstansiasi FM dengan getSupportFM
 		HomeFragment mHomeFragment = new HomeFragment(); // Menginstansiasi HomeFragment
 		Fragment fragment = mFragmentManager.findFragmentByTag(HomeFragment.class.getSimpleName()); // Mendaftarkan HomeFragment menjadi Fragment menggunakan Fragment Manager
 		
-		if (!(fragment instanceof HomeFragment)) { 
+		if (!(fragment instanceof HomeFragment)) {
 			Log.d("MyFlexibleFragment", "Fragment Name :" + HomeFragment.class.getSimpleName()); // Menampilkan info melalui Log.d("String", "String")
-			mFragmentManager
+			mFragmentManager // Proses manipulasi menampilkan fragment di activity
 				.beginTransaction()
 				.add(R.id.frame_container, mHomeFragment, HomeFragment.class.getSimpleName()) // add(Activity Layout, Fragment Manager, Fragment)
 				.commit();
 		}
 	}
 	```
+
+## Berpindah Antar Fragment Pada Activity Yang Sama
+- Buat Fragment baru, `klik kanan pada project -> New -> Fragment -> Fragment (Blank)`
+- Setup Fragment, name: `CategoryFragment`, layout name : `fragment_category`, dan pilih source language yang digunakan
+- Atur `fragment_category.xml` seperti berikut:
+	```xml
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:padding="16dp">
+	
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:text="@string/this_category" />
+
+		<Button
+			android:id="@+id/btn_detail_category"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/category_lifestyle" />
+
+	</LinearLayout>
+	```
+- Pada `CategoryFragment` hapus kode yang tidak diperlukan, dan ubah menjadi seperti ini
+	```java
+	public class CategoryFragment extends Fragment implements View.OnClickListener {
+	
+		// Constructor
+		public CategoryFragment() {
+		}
+	
+		@Override
+		public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+								Bundle savedInstanceState) {
+			// Inflate the layout for this fragment
+			return inflater.inflate(R.layout.fragment_category, container, false);
+		}
+		
+		@Override
+		public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+			super.onViewCreated(view, savedInstanceState);
+			
+			Button btnDetailCategory = view.findViewById(R.id.btn_detail_category);
+			btnDetailCategory.setOnClickListener(this);
+		}
+
+		@Override
+		public void onClick(View v) {
+			if (v.getId() == R.id.btn_detail_category){ // Menjalankan fungsi klik sesuai view yang ditekan
+
+			}
+		}
+	}
+	```
+- Kembali pada `HomeFragment` tambahkan kode pada fungsi onClick() menjadi seperti ini
+	```java
+	@Override
+	public void onClick(View v) {
+		if (v.getId() == R.id.btn_category) {
+			FragmentManager mFragmentManager = getParentFragmentManager(); // Menginstansiasi FM dengan getParentFM
+			CategoryFragment mCategoryFragment = new CategoryFragment(); // Menginstansiasi Category Fragment
+			mFragmentManager // Proses manipulasi menampilkan fragment di activity
+					.beginTransaction()
+					.replace(R.id.frame_container, mCategoryFragment, CategoryFragment.class.getSimpleName()) // replace(Activity Layout, Fragment Manager, Fragment)
+					.addToBackStack(null) // membuat fragment ditutup satu persatu, jika tidak langsung close
+					.commit();
+		}
+	}
+	```
+
 ##
 ##
 
