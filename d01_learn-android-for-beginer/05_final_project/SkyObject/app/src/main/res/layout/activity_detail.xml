@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <VideoView
+                android:id="@+id/vv_planet"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                tools:layout_editor_absoluteX="17dp"
+                tools:layout_editor_absoluteY="121dp"
+                android:layout_gravity="center"
+                />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        style="@style/TextContent"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/planet_name"
+                        android:gravity=""
+                        android:textSize="32sp"
+                        />
+
+                    <TextView
+                        style="@style/TextContent.Subtitle"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/description"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_planet"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        tools:src="@tools:sample/avatars"
+                        />
+
+                </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_description"
+            style="@style/TextContent"
+            android:layout_marginBottom="16dp"
+            android:lineSpacingMultiplier="1"
+            android:text="@string/planet_detail"
+            />
+
+        <TextView
+            style="@style/TextContent.Subtitle"
+            android:layout_marginBottom="8dp"
+            android:text="@string/information"
+            />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    style="@style/TextSpec.Field"
+                    android:text="@string/radius"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_radius"
+                    style="@style/TextSpec.Value"
+                    android:text="@string/dummy_text"
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    style="@style/TextSpec.Field"
+                    android:text="@string/mass"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_mass"
+                    style="@style/TextSpec.Value"
+                    android:text="@string/dummy_text"
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    style="@style/TextSpec.Field"
+                    android:text="@string/area"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_area"
+                    style="@style/TextSpec.Value"
+                    android:text="@string/dummy_text"
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    style="@style/TextSpec.Field"
+                    android:text="@string/gravity"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_gravity"
+                    style="@style/TextSpec.Value"
+                    android:text="@string/dummy_text"
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    style="@style/TextSpec.Field"
+                    android:text="@string/distance"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_distance"
+                    style="@style/TextSpec.Value"
+                    android:text="@string/dummy_text"
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    style="@style/TextSpec.Field"
+                    android:text="@string/rotation"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_rotation"
+                    style="@style/TextSpec.Value"
+                    android:text="@string/dummy_text"
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    style="@style/TextSpec.Field"
+                    android:text="@string/moon"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_moon"
+                    style="@style/TextSpec.Value"
+                    android:text="@string/dummy_text"
+                    />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/action_share"
+            android:text="@string/share"
+            style="@style/ButtonGeneral"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

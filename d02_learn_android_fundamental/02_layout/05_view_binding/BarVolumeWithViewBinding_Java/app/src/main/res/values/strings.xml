@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">225 BarVolumeWithViewBinding_Java</string>
+    <string name="length">Panjang</string>
+    <string name="width">Lebar</string>
+    <string name="height">TInggi</string>
+    <string name="calculate">Hitung</string>
+    <string name="result">Hasil</string>
+</resources>

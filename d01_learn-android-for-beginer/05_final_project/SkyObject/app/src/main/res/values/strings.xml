@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">15 Sky Object</string>
+    <string name="planet_name">Planet Name</string>
+    <string name="planet_detail">Planet Detail</string>
+    <string name="sky_object">Sky Object</string>
+    <string name="sky_object_grid">Sky Object : Grid</string>
+    <string name="sky_object_card">Sky Object : Card</string>
+    <string name="about">About</string>
+    <string name="favorite">Favorite</string>
+    <string name="share">Share</string>
+    <string name="developer">Budi Darmawan</string>
+    <string name="android_developer">Android Developer</string>
+    <string name="description">Deskripsi</string>
+    <string name="information">Informasi</string>
+    <string name="radius">Radius Rata-rata</string>
+    <string name="dummy_text">teks dummy</string>
+    <string name="mass">Massa</string>
+    <string name="area">Area Permukaan</string>
+    <string name="gravity">Gravitasi</string>
+    <string name="distance">Jarak dari Matahari</string>
+    <string name="rotation">Waktu Rotasi</string>
+    <string name="moon">Bulan</string>
+    <string name="planet">Planet</string>
+    <string name="email">suntree99@ymail.com</string>
+</resources>
