@@ -76,11 +76,10 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 	public class BlankFragment extends Fragment {
 
 		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, // 
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, 
 								Bundle savedInstanceState) {
-			// Inflate the layout for this fragment
-			return inflater.inflate(R.layout.fragment_home, container, false);
-			// mengubah layout xml menjadi object viewgroup dengan metode inflate()
+			
+			return inflater.inflate(R.layout.fragment_home, container, false); // mengubah layout xml menjadi object viewgroup
 			// inflate(layout fragment, layout activity (root), ditanamkan atau dipisah dengan root)
 		}
 	}
@@ -97,10 +96,10 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 		}
 	
 		@Override
-		public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) { // Digunakan untuk mengiisiasi view dan mengatur actionnya
+		public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) { // Digunakan untuk menginisiasi view dan mengatur actionnya
 			super.onViewCreated(view, savedInstanceState);
 
-			Button btnCategory = view.findViewById(R.id.btn_category); // penambahan view. menunjukkan object view berada di fragment bukan di root
+			Button btnCategory = view.findViewById(R.id.btn_category); // Untuk fragment ditambahkan view.
 			btnCategory.setOnClickListener(this);
 		}
 
@@ -118,14 +117,14 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 		setContentView(R.layout.activity_main);
 	
 		FragmentManager mFragmentManager = getSupportFragmentManager(); // Menginstansiasi FM dengan getSupportFM
-		HomeFragment mHomeFragment = new HomeFragment(); // Menginstansiasi HomeFragment
-		Fragment fragment = mFragmentManager.findFragmentByTag(HomeFragment.class.getSimpleName()); // Mendaftarkan HomeFragment menjadi Fragment menggunakan Fragment Manager
+		HomeFragment mHomeFragment = new HomeFragment(); // Menginstansiasi HF
+		Fragment fragment = mFragmentManager.findFragmentByTag(HomeFragment.class.getSimpleName()); // Mendaftarkan HF menjadi Fragment menggunakan FM
 		
 		if (!(fragment instanceof HomeFragment)) {
-			Log.d("MyFlexibleFragment", "Fragment Name :" + HomeFragment.class.getSimpleName()); // Menampilkan info melalui Log.d("String", "String")
-			mFragmentManager // Proses manipulasi menampilkan fragment di activity
+			Log.d("MyFlexibleFragment", "Fragment Name :" + HomeFragment.class.getSimpleName()); // Menampilkan info via Log.d("String", "String")
+			mFragmentManager // Proses manipulasi tampilan fragment di activity
 				.beginTransaction()
-				.add(R.id.frame_container, mHomeFragment, HomeFragment.class.getSimpleName()) // add(Activity Layout, Fragment Manager, Fragment)
+				.add(R.id.frame_container, mHomeFragment, HomeFragment.class.getSimpleName()) // add(Activity Layout, HF, Fragment Name)
 				.commit();
 		}
 	}
@@ -182,7 +181,7 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 
 		@Override
 		public void onClick(View v) {
-			if (v.getId() == R.id.btn_detail_category){ // Menjalankan fungsi klik sesuai view yang ditekan
+			if (v.getId() == R.id.btn_detail_category){ // Menyelesi view untuk menjalankan fungsi klik
 
 			}
 		}
@@ -194,14 +193,366 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 	public void onClick(View v) {
 		if (v.getId() == R.id.btn_category) {
 			FragmentManager mFragmentManager = getParentFragmentManager(); // Menginstansiasi FM dengan getParentFM
-			CategoryFragment mCategoryFragment = new CategoryFragment(); // Menginstansiasi Category Fragment
-			mFragmentManager // Proses manipulasi menampilkan fragment di activity
+			CategoryFragment mCategoryFragment = new CategoryFragment(); // Menginstansiasi CF
+			mFragmentManager // Proses manipulasi tampilan fragment di activity
 					.beginTransaction()
-					.replace(R.id.frame_container, mCategoryFragment, CategoryFragment.class.getSimpleName()) // replace(Activity Layout, Fragment Manager, Fragment)
-					.addToBackStack(null) // membuat fragment ditutup satu persatu, jika tidak langsung close
-					.commit();
+					.replace(R.id.frame_container, mCategoryFragment, CategoryFragment.class.getSimpleName()) // replace(Activity Layout, HF, Fragment Name)
+					.addToBackStack(null) // Membuat fragment ditutup satu persatu, jika tidak langsung close
+					.commit(); // Menerapkan fragment
 		}
 	}
+	```
+
+## Mengirim Data Antar Fragment Pada Activity Yang Sama
+- Buat Fragment baru, `klik kanan pada project -> New -> Fragment -> Fragment (Blank)`
+- Setup Fragment, name: `DetailCategoryFragment`, layout name : `fragment_detail_category`, dan pilih source language yang digunakan
+- Atur `fragment_detail_category.xml` seperti berikut:
+	```xml
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:padding="16dp">
+	
+		<TextView
+			android:id="@+id/tv_category_name"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:text="@string/category_name" />
+
+		<TextView
+			android:id="@+id/tv_category_description"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:text="@string/category_description" />
+
+		<Button
+			android:id="@+id/btn_profile"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/to_profile" />
+		
+		<Button
+			android:id="@+id/btn_show_dialog"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/show_dialog" />
+	
+	</LinearLayout>
+	```
+- Pada `DetailCategoryFragment` hapus kode yang tidak diperlukan, dan ubah menjadi seperti ini
+	```java
+	public class DetailCategoryFragment extends Fragment {
+	
+		// Inisialisasi variabel view
+		TextView tvCategoryName;
+		TextView tvCategoryDescription;
+		Button btnProfile;
+		Button btnShowDialog;
+
+		// Inisialisasi konstanta untuk perantara data (dibuat di fragment tujuan)
+		public static String EXTRA_NAME = "extra_name";
+		public static String EXTRA_DESCRIPTION = "extra_description";
+		
+		// Inisialisasi variable untuk menerima data beserta setter dan getter nya
+		private String description;
+
+		public String getDescription() {
+			return description;
+		}
+		public void setDescription(String description) {
+			this.description = description;
+		}
+	
+		@Override
+		public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+								Bundle savedInstanceState) {
+			// Inflate the layout for this fragment
+			return inflater.inflate(R.layout.fragment_category, container, false);
+		}
+		
+		@Override
+		public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+			super.onViewCreated(view, savedInstanceState);
+			
+			// Casting variable view
+			tvCategoryName = view.findViewById(R.id.tv_category_name);
+			tvCategoryDescription = view.findViewById(R.id.tv_category_description);
+			btnProfile = view.findViewById(R.id.btn_profile);
+			btnShowDialog = view.findViewById(R.id.btn_show_dialog);
+
+			// Menerima Data menggunakan Bundle
+			if (savedInstanceState != null) { // Mengecek data yang disimpan di Bundle
+				String descFromBundle = savedInstanceState.getString(EXTRA_DESCRIPTION); // Mengambil data yang dikirim
+				setDescription(descFromBundle); // Menerapkan data menggunakan setter
+			}
+
+			// Menerima Data menggunakan Arguments
+			if (getArguments() != null) { // Mengecek data yang dikirimkan via argument
+				String categoryName = getArguments().getString(EXTRA_NAME); // Mengambil data yang dikirimkan
+				tvCategoryName.setText(categoryName); // Menerapkan data pada text view
+
+				tvCategoryDescription.setText(getDescription()); // Mengambil dan menerapkan data dengan getter
+			}
+		}
+
+		@Override
+		public void onClick(View v) {
+			if (v.getId() == R.id.btn_detail_category){ // Menyeleksi view untuk menjalankan fungsi klik
+
+			}
+		}
+	}
+	```
+- Kembali pada `CategoryFragment` tambahkan kode pada fungsi onClick() menjadi seperti ini
+	```java
+	@Override
+	public void onClick(View v) {
+		if (v.getId() == R.id.btn_detail_category) { // Menyeleksi view untuk menjalankan fungsi klik
+			FragmentManager mFragmentManager = getParentFragmentManager; // Menginstansiasi FM dengan getParentFM
+			DetailCategoryFragment mDetailCategoryFragment = new DetailCategoryFragment(); // Menginstansiasi DCF
+			
+			// Isisialisasi object Bundle untuk mengirim data
+			Bundle mBundle = new Bundle(); // Menginstansiasi Bundle untuk menyimpan data di state
+			mBundle.putString(DetailCategoryFragment.EXTRA_NAME, "Lifestyle"); // Mengirim data menggunakan Bundle via konstanta EXTRA_NAME di DCF
+
+			// Deklarasi variable untuk dikirimkan menggunakan setter
+			String description = "Kategori ini akan berisi produk-produk lifestyle"; // Deklarasi variable
+
+			mDetailCategoryFragment.setArguments(mBundle); // Mengirimkan data dengan bundle via arguments
+			mDetailCategoryFragment.setDescription(description); // mengirim data menggunakan setter
+
+			if (mFragmentManager != null) { // Mengecek keberadaan FM
+				mFragmentManager
+						.beginTransaction()
+						.replace(R.id.frame_container, mDetailCategoryFragment, DetailCategoryFragment.class.getSimpleName())
+						.addToBackStack(null)
+						.commit();
+			}
+		}
+	}
+	```
+
+## Fragment Untuk Dialog
+- Buat Fragment baru, `klik kanan pada project -> New -> Fragment -> Fragment (Blank)`
+- Setup Fragment, name: `OptionDialogFragment`, layout name : `fragment_option_dialog`, dan pilih source language yang digunakan
+- Atur `fragment_option_dialog.xml` seperti berikut:
+	```xml
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:padding="16dp">
+	
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:text="@string/question_coach" />
+
+		<RadioGroup
+			android:id="@+id/rg_options"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+			<RadioButton
+				android:id="@+id/rb_saf"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="16dp"
+				android:text="@string/sir_alex_ferguson" />
+			<RadioButton
+				android:id="@+id/rb_mou"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="16dp"
+				android:text="@string/jose_mourinho" />
+			<RadioButton
+				android:id="@+id/rb_lvg"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="16dp"
+				android:text="@string/louis_van_gaal" />
+			<RadioButton
+				android:id="@+id/rb_moyes"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="16dp"
+				android:text="@string/david_moyes" />
+		</RadioGroup>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+			<Button
+				android:id="@+id/btn_close"
+				style="?android:attr/buttonBarButtonStyle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="4dp"
+				android:layout_marginRight="4dp"
+				android:layout_weight="0.5"
+				android:text="@string/close" />
+			<Button
+				android:id="@+id/btn_choose"
+				style="?android:attr/buttonBarButtonStyle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="4dp"
+				android:layout_marginStart="4dp"
+				android:layout_weight="0.5"
+				android:text="@string/choose" />
+		</LinearLayout>
+
+	</LinearLayout>
+	```
+- Pada `OptionDialogFragment` ubah turunan Fragment menjadi DialogFragment hapus kode yang tidak diperlukan
+- Tambahkan inisialiasi view, casting, dan deklarasi fungsi klik seperti dibawah ini
+	```java
+	public class OptionDialogFragment extends DialogFragment { // turunan DialogFragment
+	
+		// Inisialisasi variabel view
+		Button btnChoose, btnClose;
+		RadioGroup rgOptions;
+		RadioButton rbSaf, rbMou, rbLvg, rbMoyes;
+		OnOptionDialogListener optionDialogListener; // Interface untuk menghandle pilihan
+
+		public OptionDialogFragment() {
+			// Required empty public constructor
+		}
+
+		@Override
+		public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+								Bundle savedInstanceState) {
+			// Inflate the layout for this fragment
+			return inflater.inflate(R.layout.fragment_option_dialog, container, false);
+		}
+		
+		@Override
+		public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+			super.onViewCreated(view, savedInstanceState);
+			
+			// Casting variable view
+			btnChoose = view.findViewById(R.id.btn_choose);
+			btnClose = view.findViewById(R.id.btn_close);
+			rgOptions = view.findViewById(R.id.rg_options);
+			rbSaf = view.findViewById(R.id.rb_saf);
+			rbLvg = view.findViewById(R.id.rb_lvg);
+			rbMou = view.findViewById(R.id.rb_mou);
+			rbMoyes = view.findViewById(R.id.rb_moyes);
+
+			btnChoose.setOnClickListener(v -> { // Menangkap pilihan saat tombol diklik
+				int checkedRadioButtonId = rgOptions.getCheckedRadioButtonId();
+
+				if (checkedRadioButtonId != -1) { // Ketika ada yang dipilih
+					String coach = null;
+					if (checkedRadioButtonId == R.id.rb_saf) { coach = rbSaf.getText().toString().trim(); }
+					else if (checkedRadioButtonId == R.id.rb_mou) { coach = rbMou.getText().toString().trim(); }
+					else if (checkedRadioButtonId == R.id.rb_lvg) { coach = rbLvg.getText().toString().trim(); }
+					else if (checkedRadioButtonId == R.id.rb_moyes) { coach = rbMoyes.getText().toString().trim(); }
+
+					if (optionDialogListener != null) { // Ketika ada yang dipilih
+						optionDialogListener.onOptionChosen(coach); // Memasukkan parameter pada fungsi onOptionChosen
+					}
+
+					getDialog().dismiss(); // Untuk membatalkan dialog dengan klik diluar dialog
+				}
+
+			});
+
+			btnClose.setOnClickListener(v -> getDialog().cancel()); // Untuk menutup dialog
+		}
+
+		@Override
+		public void onAttach(Context context) { // Fungsi saat Dialog dipanggil
+			super.onAttach(context);
+
+			Fragment fragment = getParentFragment(); // Mengambil DCF
+	
+			if (fragment instanceof DetailCategoryFragment) {
+				DetailCategoryFragment detailCategoryFragment = (DetailCategoryFragment) fragment;
+				this.optionDialogListener = detailCategoryFragment.optionDialogListener; // menghubungkan ODF dan DCF
+			}
+		}
+	
+		@Override
+		public void onDetach() { // Fungsi saat Dialog dimatikan
+			super.onDetach();
+
+			this.optionDialogListener = null;
+		}
+	
+		public interface OnOptionDialogListener { // Interface untuk menghandle ketika tombol Pilih diklik
+			void onOptionChosen(String text);
+		}
+	}
+	```
+- Pada `DetailCategoryFragment` di method `onViewCreated `tambahkan kode untuk memanggil DialogFragment
+	```java
+	@Override
+	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+
+		...
+		
+		btnShowDialog.setOnClickListener(v -> {
+			FragmentManager mFragmentManager = getChildFragmentManager(); // Menginstansiasi FM dengan getChildFM
+			OptionDialogFragment mOptionDialogFragment = new OptionDialogFragment(); // Menginstansiasi ODF
+			mOptionDialogFragment.show(mFragmentManager, OptionDialogFragment.class.getSimpleName()); // Menampilkan ODF menggunakan FM ke Layar
+		});
+	}
+	```
+- Masih Pada `DetailCategoryFragment` tambahkan kode untuk Menampilkan Toast seperti berikut
+	```java
+	public class DetailCategoryFragment extends Fragment {
+	
+		...
+		
+		OptionDialogFragment.OnOptionDialogListener optionDialogListener = new OptionDialogFragment.OnOptionDialogListener() { // Menginstansiasi optionDialogListener
+			@Override
+			public void onOptionChosen(String text) {
+				Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show(); // Melakukan override dengan Toast
+			}
+		};
+	}
+	```
+
+## Memanggil Activity Dari Fragment
+- Buat Acativity baru, `klik kanan pada project -> New -> Activity -> Empty Acitivity`
+- Setup Activity, name: `ProfileAcitivity`, layout name : `activity_profile`, dan pilih source language yang digunakan
+- Atur `activity_profile.xml` seperti berikut:
+	```xml
+	<?xml version="1.0" encoding="utf-8"?>
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:padding="16dp">
+	
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/this_profile" />
+	</RelativeLayout>
+	```
+- Pada `DetailCategoryFragment` tambahkan fungsi onClick untuk perpindah ke Activity
+	```java
+	@Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+		...
+
+        btnProfile.setOnClickListener(v -> {
+            Intent mIntent = new Intent(getActivity(), ProfileActivity.class); // Pada Fragment gunakan getActivity() untuk memanggil context Activity
+            startActivity(mIntent);
+        });
+    }
 	```
 
 ##

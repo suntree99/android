@@ -55,6 +55,7 @@ public class DetailCategoryFragment extends Fragment {
 
         String categoryName = getArguments().getString(EXTRA_NAME); // Cara 1 mengambil data dari Bundle
         tvCategoryName.setText(categoryName);
+
         tvCategoryDescription.setText(getDescription()); // Cara 2 mengambil data dengan Getter
 
         btnShowDialog.setOnClickListener(v -> {
