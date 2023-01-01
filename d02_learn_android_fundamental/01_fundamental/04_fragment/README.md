@@ -2,15 +2,15 @@
 Codelab Fragment di Activity
 
 ## Project
-- Nama Project : 
-- Target & Minimum Target SDK :
-- Tipe Activity :
-- Activity Name :
-- Use AndroidX artifacts :
-- Language : 
+- Nama Project : MyFlexibleFragment
+- Target & Minimum Target SDK : Phone and Tablet, API level 21
+- Tipe Activity : Empty Activity
+- Activity Name : MainActivity
+- Use AndroidX artifacts : True
+- Language : Kotlin / `Java`
 
-## Setup Tampilan
-Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
+## Setup Layout Utama
+- Atur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,7 +23,7 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 ## Menampilkan Fragment Pada Activity 
 - Buat Fragment baru, `klik kanan pada project -> New -> Fragment -> Fragment (Blank)`
 - Setup Fragment, name: `HomeFragment`, layout name : `fragment_home`, dan pilih source language yang digunakan
-- Atur `fragment_home.xml` seperti berikut:
+- Atu `fragment_home.xml` menggunakan `LinearLayout`
 	```xml
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:tools="http://schemas.android.com/tools"
@@ -47,7 +47,7 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 			
 	</LinearLayout>
 	```
-- Tambahkan resource string pada `res → values → strings.xml` seperti berikut:
+- Tambahkan resource string pada `res → values → strings.xml`
 	```xml
 	<resources>
 		<string name="app_name">MyFlexibleFragment</string>
@@ -79,12 +79,12 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, 
 								Bundle savedInstanceState) {
 			
-			return inflater.inflate(R.layout.fragment_home, container, false); // mengubah layout xml menjadi object viewgroup
+			return inflater.inflate(R.layout.fragment_home, container, false); // Mengubah layout xml menjadi object viewgroup
 			// inflate(layout fragment, layout activity (root), ditanamkan atau dipisah dengan root)
 		}
 	}
 	```
-- Pada `HomeFragment` implements `View.OnClickListener` dan tambahkan fungsi `onViewCreated`
+- Masih pada `HomeFragment` tambahkan implements `View.OnClickListener` dan tambahkan fungsi `onViewCreated`
 	```java
 	public class HomeFragment extends Fragment implements View.OnClickListener {
 	
@@ -103,13 +103,13 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 			btnCategory.setOnClickListener(this);
 		}
 
-		@Override
+		@Override // Implementasi method
 		public void onClick(View v) {
 
 		}
 	}
 	```
-- Pada `MainActivity` kita tanamkan `HomeFragment`
+- Pada `MainActivity` tanamkan `HomeFragment` menggunakan `FragmentManager`
 	```java
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -118,14 +118,14 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 	
 		FragmentManager mFragmentManager = getSupportFragmentManager(); // Menginstansiasi FM dengan getSupportFM
 		HomeFragment mHomeFragment = new HomeFragment(); // Menginstansiasi HF
-		Fragment fragment = mFragmentManager.findFragmentByTag(HomeFragment.class.getSimpleName()); // Mendaftarkan HF menjadi Fragment menggunakan FM
+		Fragment fragment = mFragmentManager.findFragmentByTag(HomeFragment.class.getSimpleName()); // Mendaftarkan HF untuk dikelola FM
 		
-		if (!(fragment instanceof HomeFragment)) {
+		if (!(fragment instanceof HomeFragment)) { // Mengecek dan memastikan fragment instance dari HF
 			Log.d("MyFlexibleFragment", "Fragment Name :" + HomeFragment.class.getSimpleName()); // Menampilkan info via Log.d("String", "String")
 			mFragmentManager // Proses manipulasi tampilan fragment di activity
 				.beginTransaction()
 				.add(R.id.frame_container, mHomeFragment, HomeFragment.class.getSimpleName()) // add(Activity Layout, HF, Fragment Name)
-				.commit();
+				.commit(); // Menerapkan fragment untui ditampilkan
 		}
 	}
 	```
@@ -160,8 +160,7 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 	```java
 	public class CategoryFragment extends Fragment implements View.OnClickListener {
 	
-		// Constructor
-		public CategoryFragment() {
+		public CategoryFragment() { // Constructor kosong
 		}
 	
 		@Override
@@ -181,7 +180,7 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 
 		@Override
 		public void onClick(View v) {
-			if (v.getId() == R.id.btn_detail_category){ // Menyelesi view untuk menjalankan fungsi klik
+			if (v.getId() == R.id.btn_detail_category){ // Pengondisian seleksi view berdasarkan id
 
 			}
 		}
@@ -192,13 +191,13 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 	@Override
 	public void onClick(View v) {
 		if (v.getId() == R.id.btn_category) {
-			FragmentManager mFragmentManager = getParentFragmentManager(); // Menginstansiasi FM dengan getParentFM
-			CategoryFragment mCategoryFragment = new CategoryFragment(); // Menginstansiasi CF
-			mFragmentManager // Proses manipulasi tampilan fragment di activity
+			FragmentManager mFragmentManager = getParentFragmentManager(); // Menginstansiasi FM dengan getParentFM (Mengambil dari Activity)
+			CategoryFragment mCategoryFragment = new CategoryFragment();
+			mFragmentManager
 					.beginTransaction()
 					.replace(R.id.frame_container, mCategoryFragment, CategoryFragment.class.getSimpleName()) // replace(Activity Layout, HF, Fragment Name)
 					.addToBackStack(null) // Membuat fragment ditutup satu persatu, jika tidak langsung close
-					.commit(); // Menerapkan fragment
+					.commit();
 		}
 	}
 	```
@@ -253,7 +252,7 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 		Button btnProfile;
 		Button btnShowDialog;
 
-		// Inisialisasi konstanta untuk perantara data (dibuat di fragment tujuan)
+		// Inisialisasi konstanta untuk perantara pengiriman data (dibuat di fragment tujuan)
 		public static String EXTRA_NAME = "extra_name";
 		public static String EXTRA_DESCRIPTION = "extra_description";
 		
@@ -301,7 +300,7 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 
 		@Override
 		public void onClick(View v) {
-			if (v.getId() == R.id.btn_detail_category){ // Menyeleksi view untuk menjalankan fungsi klik
+			if (v.getId() == R.id.btn_detail_category){
 
 			}
 		}
@@ -311,7 +310,7 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 	```java
 	@Override
 	public void onClick(View v) {
-		if (v.getId() == R.id.btn_detail_category) { // Menyeleksi view untuk menjalankan fungsi klik
+		if (v.getId() == R.id.btn_detail_category) {
 			FragmentManager mFragmentManager = getParentFragmentManager; // Menginstansiasi FM dengan getParentFM
 			DetailCategoryFragment mDetailCategoryFragment = new DetailCategoryFragment(); // Menginstansiasi DCF
 			
@@ -411,8 +410,8 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 
 	</LinearLayout>
 	```
-- Pada `OptionDialogFragment` ubah turunan Fragment menjadi DialogFragment hapus kode yang tidak diperlukan
-- Tambahkan inisialiasi view, casting, dan deklarasi fungsi klik seperti dibawah ini
+- Pada `OptionDialogFragment` ubah turunan Fragment menjadi DialogFragment dan hapus kode yang tidak diperlukan
+- Tambahkan inisialiasi view, casting, dan mengatur method setOnClickLIstener seperti dibawah ini
 	```java
 	public class OptionDialogFragment extends DialogFragment { // turunan DialogFragment
 	
@@ -460,31 +459,31 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 						optionDialogListener.onOptionChosen(coach); // Memasukkan parameter pada fungsi onOptionChosen
 					}
 
-					getDialog().dismiss(); // Untuk membatalkan dialog dengan klik diluar dialog
+					getDialog().dismiss(); // Untuk menutup dialog
 				}
 
 			});
 
-			btnClose.setOnClickListener(v -> getDialog().cancel()); // Untuk menutup dialog
+			btnClose.setOnClickListener(v -> getDialog().cancel()); // Untuk membatalkan dan menutup dialog
 		}
 
 		@Override
-		public void onAttach(Context context) { // Fungsi saat Dialog dipanggil
+		public void onAttach(Context context) { // Fungsi saat ODF dipanggil
 			super.onAttach(context);
 
 			Fragment fragment = getParentFragment(); // Mengambil DCF
 	
 			if (fragment instanceof DetailCategoryFragment) {
 				DetailCategoryFragment detailCategoryFragment = (DetailCategoryFragment) fragment;
-				this.optionDialogListener = detailCategoryFragment.optionDialogListener; // menghubungkan ODF dan DCF
+				this.optionDialogListener = detailCategoryFragment.optionDialogListener; // menghubungkan listener ODF dan DCF
 			}
 		}
 	
 		@Override
-		public void onDetach() { // Fungsi saat Dialog dimatikan
+		public void onDetach() { // Fungsi saat ODF dimatikan
 			super.onDetach();
 
-			this.optionDialogListener = null;
+			this.optionDialogListener = null; // Menghapus hubungan ODF untuk menghapus penggunaan memori
 		}
 	
 		public interface OnOptionDialogListener { // Interface untuk menghandle ketika tombol Pilih diklik
@@ -503,7 +502,7 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 		btnShowDialog.setOnClickListener(v -> {
 			FragmentManager mFragmentManager = getChildFragmentManager(); // Menginstansiasi FM dengan getChildFM
 			OptionDialogFragment mOptionDialogFragment = new OptionDialogFragment(); // Menginstansiasi ODF
-			mOptionDialogFragment.show(mFragmentManager, OptionDialogFragment.class.getSimpleName()); // Menampilkan ODF menggunakan FM ke Layar
+			mOptionDialogFragment.show(mFragmentManager, OptionDialogFragment.class.getSimpleName()); // Menampilkan ODF ke Layar menggunakan FM
 		});
 	}
 	```
@@ -516,7 +515,7 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 		OptionDialogFragment.OnOptionDialogListener optionDialogListener = new OptionDialogFragment.OnOptionDialogListener() { // Menginstansiasi optionDialogListener
 			@Override
 			public void onOptionChosen(String text) {
-				Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show(); // Melakukan override dengan Toast
+				Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show(); // Melakukan override untuk menampilkan Toast
 			}
 		};
 	}
@@ -549,7 +548,7 @@ Mengatur `activity_main.xml` dengan `FrameLayout` sebagai tempat Fragment
 		...
 
         btnProfile.setOnClickListener(v -> {
-            Intent mIntent = new Intent(getActivity(), ProfileActivity.class); // Pada Fragment gunakan getActivity() untuk memanggil context Activity
+            Intent mIntent = new Intent(getActivity(), ProfileActivity.class); // Gunakan getActivity() untuk memanggil context Activity dari fragment
             startActivity(mIntent);
         });
     }
