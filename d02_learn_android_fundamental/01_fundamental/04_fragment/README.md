@@ -23,7 +23,7 @@ Codelab Fragment di Activity
 ## Menampilkan Fragment Pada Activity 
 - Buat Fragment baru, `klik kanan pada project -> New -> Fragment -> Fragment (Blank)`
 - Setup Fragment, name: `HomeFragment`, layout name : `fragment_home`, dan pilih source language yang digunakan
-- Atu `fragment_home.xml` menggunakan `LinearLayout`
+- Atur `fragment_home.xml` menggunakan `LinearLayout`
 	```xml
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:tools="http://schemas.android.com/tools"
@@ -129,6 +129,7 @@ Codelab Fragment di Activity
 		}
 	}
 	```
+- Jalankan Aplikasi atau tekan `Shift+F10`
 
 ## Berpindah Antar Fragment Pada Activity Yang Sama
 - Buat Fragment baru, `klik kanan pada project -> New -> Fragment -> Fragment (Blank)`
@@ -201,6 +202,7 @@ Codelab Fragment di Activity
 		}
 	}
 	```
+- Jalankan Aplikasi atau tekan `Shift+F10`
 
 ## Mengirim Data Antar Fragment Pada Activity Yang Sama
 - Buat Fragment baru, `klik kanan pada project -> New -> Fragment -> Fragment (Blank)`
@@ -334,6 +336,7 @@ Codelab Fragment di Activity
 		}
 	}
 	```
+- Jalankan Aplikasi atau tekan `Shift+F10`
 
 ## Fragment Untuk Dialog
 - Buat Fragment baru, `klik kanan pada project -> New -> Fragment -> Fragment (Blank)`
@@ -553,6 +556,7 @@ Codelab Fragment di Activity
         });
     }
 	```
+- Jalankan Aplikasi atau tekan `Shift+F10`
 
 ##
 ##

@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class HomeFragment extends Fragment {
 
-    // variable untuk Tab Layout With One Fragment
+    // variable untuk TabLayout With One Fragment
     static final String ARG_SECTION_NUMBER = "section_number";
 
     // mengirimkan data dari activity ke fragment (variable untuk menangkap data)
